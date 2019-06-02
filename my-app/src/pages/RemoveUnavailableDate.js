@@ -2,25 +2,25 @@ import React, { Component } from 'react';
 
 class RemoveUnavailableDate extends Component {
 
-    constructor(){
+    constructor() {
         super();
-        this.state ={
-            time_id:'',
+        this.state = {
+            time_id: '',
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleChange(e){
+    handleChange(e) {
         let target = e.target;
         let value = target.type === 'checkbox' ? target.checked : target.value;
         let name = target.name;
 
         this.setState({
-            [name] : value
+            [name]: value
         });
     }
 
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
         /* Left for back-end handling */
     }
@@ -32,7 +32,7 @@ class RemoveUnavailableDate extends Component {
                 <form className="FormFields">
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="time_id">Time ID</label>
-                        <input type="number" className="FormField__Input" placeholder="Enter the id for the desired time to remove" name="time_id"  value={this.state.time_id} onChange={this.handleChange}/>
+                        <input type="number" className="FormField__Input" placeholder="Enter the id for the desired time to remove" name="time_id" value={this.state.time_id} onChange={this.handleChange} />
                     </div>
 
                     <div className="FormField">
