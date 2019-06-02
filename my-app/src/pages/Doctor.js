@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 class Receptionist extends Component {
 
     render() {
-        return (<div> Doctor Interface</div>);
+        return (<div> Doctor Sign in and Interface</div>);
     }
 }
 

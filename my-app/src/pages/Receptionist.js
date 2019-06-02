@@ -8,46 +8,47 @@ class Receptionist extends Component {
 
     render() {
         return (
-          <Router>
-    
-            <div className="App">
-              <div className="App__Aside">
-                <div className="FormTitle">
-                <label className="PageSwitcher__Item" htmlFor="doctor_name">
-                  Patients Upcoming Appointments
-                </label>
-                </div>
-    
-    
-    
-              </div>
-              <div className="App__Form">
-                {/* <div className="PageSwitcher">
+            <Router>
+
+                <div className="App">
+                    <div className="App__Aside">
+                        <div className="FormTitle">
+                            <div className="Receptionist_AppointmentsList">
+                                <label className="FormTitle__ListPatients">
+                                    Patients Upcoming Appointments</label>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div className="App__Form">
+                        {/* <div className="PageSwitcher">
                   <Link to="/RegisterDoctor" className="PageSwitcher__Item PageSwitcher__Item--Active">X</Link>
                   <Link to="/RegisterPatient" className="PageSwitcher__Item">Y</Link>
                 </div> */}
-                <div className="FormTitle">
-                  <NavLink to="/RegisterDoctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-                    Register Doctor
+                        <div className="FormTitle">
+                            <NavLink to="/Receptionist/RegisterDoctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                                Register Doctor
                 </NavLink>
-                  or
-              <NavLink exact to="/RegisterPatient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-                    Register Patient
+                            or
+              <NavLink exact to="/Receptionist/RegisterPatient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                                Register Patient
                 </NavLink>
+                        </div>
+
+
+                        <Route exact path="/Receptionist/RegisterPatient" component={SignUpPatient}>
+                        </Route >
+                        <Route exact path="/Receptionist/RegisterDoctor" component={SignUpDoctor}>
+                        </Route>
+
+                    </div>
                 </div>
-    
-    
-                <Route exact path="/RegisterPatient" component={SignUpPatient}>
-                </Route >
-                <Route exact path="/RegisterDoctor" component={SignUpDoctor}>
-                </Route>
-    
-              </div>
-            </div>
-    
-          </Router>
+
+            </Router>
         );
-      }
+    }
 
 }
 

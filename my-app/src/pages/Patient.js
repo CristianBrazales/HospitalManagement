@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom'
 class Patient extends Component {
 
     render() {
-        return (<div> Patient Interface</div>);
+        return (<div> Patient Sign in and Interface</div>);
     }
 }
 

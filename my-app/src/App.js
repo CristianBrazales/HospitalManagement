@@ -11,14 +11,12 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <div className="App__Form__FullWidth">
-
-          
+          <div className="App__Form__FullWidth">          
             <Route exact path="/">
               <div className="FormTitle">
                 <NavLink to="/Doctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                   Sign in Doctor</NavLink>or
-                  <NavLink exact to="/Receptionist" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                  <NavLink exact to="/Receptionist/RegisterDoctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                   Sign in Receptionist</NavLink> or
                   <NavLink exact to="/Patient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                   Sign in Patient</NavLink>
@@ -26,10 +24,9 @@ class App extends Component {
             </Route >
 
 
-
             <Route exact path="/Doctor" component={Doctor}>
             </Route >
-            <Route exact path="/Receptionist" component={Receptionist}>
+            <Route exact path="/Receptionist/RegisterDoctor" component={Receptionist}>
             </Route >
             <Route exact path="/Patient" component={Patient}>
             </Route >
