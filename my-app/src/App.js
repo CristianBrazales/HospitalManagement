@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import SignUpDoctor from './pages/SignUpDoctor';
 import SignUpPatient from './pages/SignUpPatient';
 
@@ -17,17 +17,17 @@ class App extends Component {
         <div className="App__Aside"></div>
         <div className="App__Form">
           <div className="PageSwitcher">
-            <Link to ="/sign-in-doctor" className="PageSwitcher__Item PageSwitcher__Item--Active">Doctor</Link>
-            <Link to="/sign-in-patient" className="PageSwitcher__Item">Patient</Link>
+            <Link to ="/sign-in-doctor"  className="PageSwitcher__Item PageSwitcher__Item--Active">X</Link>
+            <Link to="/sign-in-patient" className="PageSwitcher__Item">Y</Link>
           </div>
           <div className="FormTitle">
-            <Link to ="/sign-in-doctor" className="FormTitle__Link FormTitle__Link--Active">
+            <NavLink to ="/sign-in-doctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
               Sign Up Doctor
-            </Link>
+            </NavLink>
             or
-          <Link to="/sign-in-patient" className="FormTitle__Link">
+          <NavLink exact to="/sign-in-patient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
               Sign Up Patient
-            </Link>
+            </NavLink>
           </div>
 
 
@@ -38,6 +38,7 @@ class App extends Component {
           </Route>
 
         </div>
+        <div className="App__Aside"></div>
       </div>
 
     </Router>
