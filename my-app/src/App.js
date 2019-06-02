@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <div className="App__Form__FullWidth">          
+          <div className="App__Form__FullWidth">
             <Route exact path="/">
               <div className="FormTitle">
                 <NavLink to="/Doctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
@@ -41,7 +41,11 @@ class App extends Component {
 
 
 export default App;
-/* 
+
+
+
+/*
+////// Don't delete for now ///////////
 render() {
     return (
       <Router>

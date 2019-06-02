@@ -20,22 +20,12 @@ class Receptionist extends Component {
 
 
 
-
-
-                    
                     <div className="App__Form">
-                        {/* <div className="PageSwitcher">
-                  <Link to="/RegisterDoctor" className="PageSwitcher__Item PageSwitcher__Item--Active">X</Link>
-                  <Link to="/RegisterPatient" className="PageSwitcher__Item">Y</Link>
-                </div> */}
                         <div className="FormTitle">
                             <NavLink to="/Receptionist/RegisterDoctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-                                Register Doctor
-                </NavLink>
-                            or
-              <NavLink exact to="/Receptionist/RegisterPatient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-                                Register Patient
-                </NavLink>
+                                Register Doctor</NavLink>or
+                            <NavLink exact to="/Receptionist/RegisterPatient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                                Register Patient</NavLink>
                         </div>
 
 
@@ -43,15 +33,10 @@ class Receptionist extends Component {
                         </Route >
                         <Route exact path="/Receptionist/RegisterDoctor" component={SignUpDoctor}>
                         </Route>
-
                     </div>
                 </div>
-
             </Router>
         );
     }
-
 }
-
-
 export default Receptionist;

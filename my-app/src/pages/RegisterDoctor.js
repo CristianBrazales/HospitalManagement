@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 class RegisterDoctor extends Component {
     constructor(){
         super();
-
         this.state ={
             doctor_name:'',
             doctor_specialization: '',
@@ -13,12 +12,9 @@ class RegisterDoctor extends Component {
             doctor_phonenumber:'',
             doctor_birthdate:'',
         }
-
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
-
 
     handleChange(e){
         let target = e.target;
