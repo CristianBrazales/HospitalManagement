@@ -13,7 +13,7 @@ class Receptionist extends Component {
                 <div className="App">
                     <div className="App__Aside">
                         <div className="Receptionist_AppointmentsList">
-                            <label className="FormTitle__Link--ListPatients ">
+                            <label className="FormField__LabelBigger">
                                 Patients Upcoming Appointments</label>
                         </div>
                     </div>
