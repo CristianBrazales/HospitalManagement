@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import SignUpDoctor from './pages/SignUpDoctor';
 import SignUpPatient from './pages/SignUpPatient';
-
-
-
 import './App.css';
 
 
