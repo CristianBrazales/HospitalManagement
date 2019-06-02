@@ -96,11 +96,11 @@
   color: white;
 }
 
-.FormTitle__ListPatients {
+.FormTitle__Link--ListPatients {
   color: rgb(255, 255, 255);
   text-decoration: none;
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin: 0 10px;
   padding-bottom: 5px;
 }

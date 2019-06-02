@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import SignUpDoctor from './RegisterDoctor';
 import SignUpPatient from './RegisterPatient';
 
@@ -12,16 +12,17 @@ class Receptionist extends Component {
 
                 <div className="App">
                     <div className="App__Aside">
-                        <div className="FormTitle">
-                            <div className="Receptionist_AppointmentsList">
-                                <label className="FormTitle__ListPatients">
-                                    Patients Upcoming Appointments</label>
-                            </div>
+                        <div className="Receptionist_AppointmentsList">
+                            <label className="FormTitle__Link--ListPatients ">
+                                Patients Upcoming Appointments</label>
                         </div>
-
-
-
                     </div>
+
+
+
+
+
+                    
                     <div className="App__Form">
                         {/* <div className="PageSwitcher">
                   <Link to="/RegisterDoctor" className="PageSwitcher__Item PageSwitcher__Item--Active">X</Link>

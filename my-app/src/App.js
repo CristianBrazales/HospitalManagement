@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import Receptionist from './pages/Receptionist';
 import Doctor from './pages/Doctor';
 import Patient from './pages/Patient'
@@ -15,11 +15,11 @@ class App extends Component {
             <Route exact path="/">
               <div className="FormTitle">
                 <NavLink to="/Doctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-                  Sign in Doctor</NavLink>or
+                  Sign in as Doctor</NavLink>or
                   <NavLink exact to="/Receptionist/RegisterDoctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-                  Sign in Receptionist</NavLink> or
+                  Sign in as Receptionist</NavLink> or
                   <NavLink exact to="/Patient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-                  Sign in Patient</NavLink>
+                  Sign in as Patient</NavLink>
               </div>
             </Route >
 
