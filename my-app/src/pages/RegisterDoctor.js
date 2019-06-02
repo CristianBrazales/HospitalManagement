@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class SignUpDoctor extends Component {
+class RegisterDoctor extends Component {
     constructor(){
         super();
 
@@ -52,7 +52,7 @@ class SignUpDoctor extends Component {
 
                 <div className="FormField">
                   <label className="FormField__Label" htmlFor="doctor_yrsOfExperience">           Years of Experience</label>
-                  <input type="number" className="FormField__Input" placeholder="Enter specialization" name="doctor_yrsOfExperience" value={this.state.doctor_yrsOfExperience} onChange={this.handleChange}/>
+                  <input type="number" className="FormField__Input" placeholder="Enter years of experience" name="doctor_yrsOfExperience" value={this.state.doctor_yrsOfExperience} onChange={this.handleChange}/>
                 </div>
 
                 <div className="FormField">
@@ -85,4 +85,4 @@ class SignUpDoctor extends Component {
     }
 }
 
-export default SignUpDoctor;
+export default RegisterDoctor;

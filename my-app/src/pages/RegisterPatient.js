@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 
-class SignUpPatient extends Component {
+class RegisterPatient extends Component {
     constructor(){
         super();
 
@@ -103,4 +103,4 @@ class SignUpPatient extends Component {
     }
 }
 
-export default SignUpPatient;
+export default RegisterPatient;

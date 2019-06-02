@@ -1,47 +1,91 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
-import SignUpDoctor from './pages/SignUpDoctor';
-import SignUpPatient from './pages/SignUpPatient';
+import Receptionist from './pages/Receptionist';
+import Doctor from './pages/Doctor';
+import Patient from './pages/Patient'
 import './App.css';
 
 
 class App extends Component {
-  render(){
-    return(
+  render() {
+    return (
       <Router>
+        <div className="App">
+          <div className="App__Form__FullWidth">
 
-      <div className="App">
-        <div className="App__Aside"></div>
-        <div className="App__Form">
-          <div className="PageSwitcher">
-            <Link to ="/sign-in-doctor"  className="PageSwitcher__Item PageSwitcher__Item--Active">X</Link>
-            <Link to="/sign-in-patient" className="PageSwitcher__Item">Y</Link>
+          
+            <Route exact path="/">
+              <div className="FormTitle">
+                <NavLink to="/Doctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                  Sign in Doctor</NavLink>or
+                  <NavLink exact to="/Receptionist" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                  Sign in Receptionist</NavLink> or
+                  <NavLink exact to="/Patient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                  Sign in Patient</NavLink>
+              </div>
+            </Route >
+
+
+
+            <Route exact path="/Doctor" component={Doctor}>
+            </Route >
+            <Route exact path="/Receptionist" component={Receptionist}>
+            </Route >
+            <Route exact path="/Patient" component={Patient}>
+            </Route >
+
           </div>
-          <div className="FormTitle">
-            <NavLink to ="/sign-in-doctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-              Sign Up Doctor
-            </NavLink>
-            or
-          <NavLink exact to="/sign-in-patient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-              Sign Up Patient
-            </NavLink>
-          </div>
-
-
-          <Route exact path="/sign-in-patient" component = {SignUpPatient}>            
-          </Route >
-
-          <Route exact path ="/sign-in-doctor"  component = {SignUpDoctor}>
-          </Route>
-
         </div>
-        <div className="App__Aside"></div>
-      </div>
 
-    </Router>
+      </Router>
     );
   }
 }
 
 
 export default App;
+/* 
+render() {
+    return (
+      <Router>
+
+        <div className="App">
+          <div className="App__Aside">
+            <div className="FormTitle">
+            <label className="PageSwitcher__Item" htmlFor="doctor_name">
+              Patients Upcoming Appointments
+            </label>
+            </div>
+
+
+
+          </div>
+          <div className="App__Form">
+            <div className="PageSwitcher">
+              <Link to="/RegisterDoctor" className="PageSwitcher__Item PageSwitcher__Item--Active">X</Link>
+              <Link to="/RegisterPatient" className="PageSwitcher__Item">Y</Link>
+            </div>
+            <div className="FormTitle">
+              <NavLink to="/RegisterDoctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                Register Doctor
+            </NavLink>
+              or
+          <NavLink exact to="/RegisterPatient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                Register Patient
+            </NavLink>
+            </div>
+
+
+            <Route exact path="/RegisterPatient" component={SignUpPatient}>
+            </Route >
+            <Route exact path="/RegisterDoctor" component={SignUpDoctor}>
+            </Route>
+
+          </div>
+        </div>
+
+      </Router>
+    );
+  }
+*/
+
