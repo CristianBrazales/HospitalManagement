@@ -70,13 +70,11 @@ class RegisterDoctor extends Component {
 
                 <div className="FormField">
                   <button className="FormField__Button mr-20">Submit</button>
-
                 </div>
 
 
               </form>
             </div>
-
         );
     }
 }

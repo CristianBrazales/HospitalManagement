@@ -14,6 +14,11 @@ class Doctor extends Component {
                             <label className="FormTitle__Link--ListPatients ">
                                 Upcoming Appointments</label>
                         </div>
+                        <div className="FormTitle"></div>
+                        <div className="Receptionist_AppointmentsList">
+                            <label className="FormTitle__Link--ListPatients ">
+                                Unavailable Dates</label>
+                        </div>
                     </div>
 
                     <div className="App__Form">

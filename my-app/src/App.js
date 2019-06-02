@@ -14,7 +14,7 @@ class App extends Component {
           <div className="App__Form__FullWidth">
             <Route exact path="/">
               <div className="FormTitle">
-                <NavLink to="/Doctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                <NavLink to="/Doctor/AddUnavailableDate" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                   Sign in as Doctor</NavLink>or
                   <NavLink exact to="/Receptionist/RegisterDoctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                   Sign in as Receptionist</NavLink> or
@@ -24,7 +24,7 @@ class App extends Component {
             </Route >
 
 
-            <Route exact path="/Doctor" component={Doctor}>
+            <Route exact path="/Doctor/AddUnavailableDate" component={Doctor}>
             </Route >
             <Route exact path="/Receptionist/RegisterDoctor" component={Receptionist}>
             </Route >
