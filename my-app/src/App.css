@@ -5,13 +5,15 @@
 }
 
 .App__Aside {
+  height: 95%;
   width: 50%;
   background-color: rgb(109, 219, 151);
   padding: 25px 40px;  
   overflow: auto;
 }
 
-.App__Form {
+.App__Form {  
+  height: 95%;
   width: 50%;
   background-color: #2E4158;
   padding: 25px 40px;
