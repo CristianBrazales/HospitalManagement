@@ -13,11 +13,19 @@ class Doctor extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Upcoming Appointments</label>
+                                <label className="FormField__Label">
+                                -TO implement-</label>
+                                <label className="FormField__Label">
+                                -list of Appointments- </label>
                         </div>
                         <div className="FormTitle"></div>
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 My Unavailable Dates</label>
+                                <label className="FormField__Label">
+                                -TO implement-</label>
+                                <label className="FormField__Label">
+                                -list of Unavailable Dates- </label>
                         </div>
                     </div>
 

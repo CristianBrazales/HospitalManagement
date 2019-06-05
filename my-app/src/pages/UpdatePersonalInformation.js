@@ -56,8 +56,7 @@ class UpdatePersonalInformation extends Component {
                     </div>
 
                     <div className="FormField">
-                        <label className="FormField__Label">
-                            (If the patient is under 19 years old include guardian information)</label>
+                        <label className="FormField__Label">                            guardian information</label>
                     </div>
 
                     <div className="FormField">
@@ -79,11 +78,8 @@ class UpdatePersonalInformation extends Component {
                         <button className="FormField__Button mr-20">Update</button>
 
                     </div>
-
-
                 </form>
             </div>
-
         );
     }
 }

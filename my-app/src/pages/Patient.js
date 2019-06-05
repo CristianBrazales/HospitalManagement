@@ -13,11 +13,19 @@ class Patient extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 My Appointments</label>
+                                <label className="FormField__Label">
+                                -TO implement-</label>
+                                <label className="FormField__Label">
+                                -list of Appointments- </label>
                         </div>
                         <div className="FormTitle"></div>
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Contact Us</label>
+                                <label className="FormField__Label">
+                                -TO implement-</label>
+                                <label className="FormField__Label">
+                                -Receptionist phone numbers- </label>
                         </div>
                     </div>
 
