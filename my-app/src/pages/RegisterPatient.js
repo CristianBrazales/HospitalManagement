@@ -91,7 +91,7 @@ class RegisterPatient extends Component {
           </div>
 
           <div className="FormField">
-            <button className="FormField__Button mr-20">Update</button>
+            <button className="FormField__Button mr-20">Submit</button>
 
           </div>
 
