@@ -15,6 +15,10 @@ class Receptionist extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Patients Upcoming Appointments</label>
+                                <label className="FormField__Label">
+                                -TO implement-</label>
+                                <label className="FormField__Label">
+                                -list of patients appointments- </label>
                         </div>
                     </div>
 
