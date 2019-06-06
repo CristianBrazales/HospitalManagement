@@ -21,9 +21,25 @@ class AddUnavailableDate extends Component {
         });
     }
 
-    handleSubmit(e){
+    async handleSubmit(e){
         e.preventDefault();
         /* Left for back-end handling */
+        const headers = new Headers();
+        headers.append('Content-type', 'AddUnavailableDate/json');
+
+        const options = {
+            method: 'POST',
+            headers,
+            body:
+            {
+            time_from: this.props.time_from,
+            time_to: this.props.time_to,
+            }
+        };
+
+        const request = new Request('link', options);
+        const response = await fetch(request);
+        const status = await response.status;
     }
 
 
@@ -31,7 +47,6 @@ class AddUnavailableDate extends Component {
         return (
             <div className="FormCenter">
                 <form className="FormFields" >
-
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="time_from">Time From</label>
                         <input type="datetime-local" className="FormField__Input" placeholder="Enter date and time" name="time_from"  value={this.state.time_from} onChange={this.handleChange}/>

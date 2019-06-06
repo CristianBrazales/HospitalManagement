@@ -20,9 +20,26 @@ class RemoveUnavailableDate extends Component {
         });
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {        
         e.preventDefault();
         /* Left for back-end handling */
+        const headers = new Headers();
+        headers.append('Content-type', 'application/json');
+
+        var data = {
+            "time_id": this.state.time_id,
+         }
+         
+
+        const options = {
+            method: 'POST',
+            headers,
+            body:JSON.stringify(data)
+        };
+
+        const request = new Request('http://3.130.67.96:3000/removeDate', options);
+        const response = await fetch(request);
+        const status = await response.status;
     }
 
 
@@ -36,7 +53,7 @@ class RemoveUnavailableDate extends Component {
                     </div>
 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20">Remove</button>
+                        <button className="FormField__Button mr-20" onClick={this.handleSubmit}>Remove</button>
                     </div>
                 </form>
             </div>
