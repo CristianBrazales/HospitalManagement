@@ -34,6 +34,7 @@ class RegisterDoctor extends Component {
     headers.append('Content-type', 'application/json');
 
     var data = {
+      'receptionist_id': this.props.match.params.receptionist_id,
       'doctor_name': this.state.doctor_name,
       'doctor_specialization': this.state.doctor_specialization,
       'doctor_yrsOfExperience': this.state.doctor_yrsOfExperience,

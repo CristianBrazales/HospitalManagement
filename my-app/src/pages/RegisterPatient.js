@@ -39,6 +39,7 @@ class RegisterPatient extends Component {
     headers.append('Content-type', 'application/json');
 
     var data = {
+      'receptionist_id': this.state.receptionist_id,
       'patient_name': this.state.patient_name,
       'patient_address': this.state.patient_address,
       'patient_phonenumber': this.state.patient_phonenumber,

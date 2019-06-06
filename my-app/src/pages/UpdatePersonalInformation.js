@@ -37,6 +37,7 @@ class UpdatePersonalInformation extends Component {
         headers.append('Content-type', 'application/json');
     
         var data = {
+        'patient_id': this.props.match.params.patient_id,
           'patient_name': this.state.patient_name,
           'patient_address': this.state.patient_address,
           'patient_phonenumber': this.state.patient_phonenumber,
@@ -52,7 +53,7 @@ class UpdatePersonalInformation extends Component {
           body: JSON.stringify(data)
         };
     
-        const request = new Request('http://3.130.67.96:3000/newPatient', options);
+        const request = new Request('http://3.130.67.96:3000/updatePatient', options);
         const response = await fetch(request);
         const status = await response.status;
     
