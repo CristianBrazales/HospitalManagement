@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 
 class RegisterPatient extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       receptionist_id: this.props.match.params.receptionist_id,
