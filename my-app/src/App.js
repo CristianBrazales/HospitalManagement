@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import Receptionist from './pages/Receptionist';
 import Doctor from './pages/Doctor';
 import Patient from './pages/Patient'
-import SignIn from './pages/SignIn';
 import './App.css';
 
 

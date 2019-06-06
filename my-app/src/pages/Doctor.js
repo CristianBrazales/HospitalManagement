@@ -5,6 +5,14 @@ import RemoveUnavailableDate from './RemoveUnavailableDate';
 
 class Doctor extends Component {
 
+    constructor(props) {
+        super(props);
+        // Default doctor_id 4000
+        this.state = {
+            doctor_id: 4000,
+        }
+    }
+
     render() {
         return (
             <Router>
@@ -31,14 +39,14 @@ class Doctor extends Component {
 
                     <div className="App__Form">
                         <div className="FormTitle">
-                            <NavLink to="/Doctor/AddUnavailableDate" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink to={"/Doctor/AddUnavailableDate/" + this.state.doctor_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                                 Add Unavailable Date</NavLink>or
-                            <NavLink exact to="/Doctor/RemoveUnavailableDate" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink exact to={"/Doctor/RemoveUnavailableDate/"+ this.state.doctor_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                                 Remove Unavailable Date</NavLink>
                         </div>
-                        <Route exact path="/Doctor/AddUnavailableDate" component={AddUnavailableDate}>
+                        <Route exact path="/Doctor/AddUnavailableDate/:doctor_id" component={AddUnavailableDate}>
                         </Route >
-                        <Route exact path="/Doctor/RemoveUnavailableDate" component={RemoveUnavailableDate}>
+                        <Route exact path="/Doctor/RemoveUnavailableDate/:doctor_id" component={RemoveUnavailableDate}>
                         </Route>
                     </div>
                 </div>

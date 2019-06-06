@@ -6,6 +6,14 @@ import SignUpPatient from './RegisterPatient';
 
 class Receptionist extends Component {
 
+    constructor(props) {
+        super(props);
+        // Default 6000
+        this.state = {
+            receptionist_id: 6000,
+        }
+    }
+
     render() {
         return (
             <Router>
@@ -26,16 +34,16 @@ class Receptionist extends Component {
 
                     <div className="App__Form">
                         <div className="FormTitle">
-                            <NavLink to="/Receptionist/RegisterDoctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink to={"/Receptionist/RegisterDoctor/" + this.state.receptionist_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                                 Register Doctor</NavLink>or
-                            <NavLink exact to="/Receptionist/RegisterPatient" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink exact to={"/Receptionist/RegisterPatient/" + this.state.receptionist_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                                 Register Patient</NavLink>
                         </div>
 
 
-                        <Route exact path="/Receptionist/RegisterPatient" component={SignUpPatient}>
+                        <Route exact path="/Receptionist/RegisterPatient/:receptionist_id" component={SignUpPatient}>
                         </Route >
-                        <Route exact path="/Receptionist/RegisterDoctor" component={SignUpDoctor}>
+                        <Route exact path="/Receptionist/RegisterDoctor/:receptionist_id" component={SignUpDoctor}>
                         </Route>
                     </div>
                 </div>

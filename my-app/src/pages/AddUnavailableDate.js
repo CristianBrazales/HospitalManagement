@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 
 class AddUnavailableDate extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state ={
             time_from:'',
             time_to: '',
+            doctor_id: this.props.match.params.doctor_id,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.getID = this.getID.bind(this);
     }
+
     handleChange(e){
         let target = e.target;
         let value = target.type === 'checkbox' ? target.checked : target.value;
@@ -20,26 +23,31 @@ class AddUnavailableDate extends Component {
             [name] : value
         });
     }
-
     async handleSubmit(e){
         e.preventDefault();
         /* Left for back-end handling */
         const headers = new Headers();
-        headers.append('Content-type', 'AddUnavailableDate/json');
-
+        headers.append('Content-type', 'application/json');
+        var data = {
+            "time_from": this.state.time_from,
+            "time_to": this.state.time_to,
+         }
         const options = {
             method: 'POST',
             headers,
-            body:
-            {
-            time_from: this.props.time_from,
-            time_to: this.props.time_to,
-            }
+            body:JSON.stringify(data)
         };
 
-        const request = new Request('link', options);
+        const request = new Request('http://3.130.67.96:3000/newUnDateDoc', options);
         const response = await fetch(request);
         const status = await response.status;
+        // Do on success
+        if (status === 200){
+            // Reset input field
+            this.setState({time_from:''});
+            this.setState({time_to:''});
+             // TODO: Call fetch to update Unavailable lists
+        }
     }
 
 
@@ -58,7 +66,7 @@ class AddUnavailableDate extends Component {
                     </div>
 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20">Add</button>
+                        <button className="FormField__Button mr-20" onClick={this.handleSubmit}>Add</button>
                     </div>
                 </form>
             </div>

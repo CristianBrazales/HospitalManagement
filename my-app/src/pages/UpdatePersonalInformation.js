@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 
 
 class UpdatePersonalInformation extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
+            patient_id: this.props.match.params.patient_id,
             patient_name: '',
             patient_address: '',
             patient_phonenumber: '',
@@ -29,10 +30,45 @@ class UpdatePersonalInformation extends Component {
         });
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
-        /* Left for background handling */
-    }
+        /* Left for back-end handling */
+        const headers = new Headers();
+        headers.append('Content-type', 'application/json');
+    
+        var data = {
+          'patient_name': this.state.patient_name,
+          'patient_address': this.state.patient_address,
+          'patient_phonenumber': this.state.patient_phonenumber,
+          'patient_birthdate': this.state.patient_birthdate,
+          'guardian_name': this.state.guardian_name,
+          'guardian_address': this.state.guardian_address,
+          'guardian_number': this.guardian_number,
+          'guardian_birthdate': this.guardian_birthdate,
+        }
+        const options = {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(data)
+        };
+    
+        const request = new Request('http://3.130.67.96:3000/newPatient', options);
+        const response = await fetch(request);
+        const status = await response.status;
+    
+        if (status === 200) {
+            // Reset input field
+            this.setState({ patient_name: '' });
+            this.setState({ patient_address: '' });
+            this.setState({ patient_phonenumber: '' });
+            this.setState({ patient_birthdate: '' });
+            this.setState({ guardian_name: '' });
+            this.setState({ guardian_address: '' });
+            this.setState({ guardian_number: '' });
+            this.setState({ guardian_birthdate: '' });
+            // TODO: Call fetch to update lists
+          }
+      }
 
 
     render() {
@@ -75,7 +111,7 @@ class UpdatePersonalInformation extends Component {
                     </div>
 
                     <div className="FormField">
-                        <button className="FormField__Button mr-20">Update</button>
+                        <button className="FormField__Button mr-20" onClick={this.handleSubmit}>Update</button>
 
                     </div>
                 </form>

@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 
 class RemoveUnavailableDate extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             time_id: '',
+            doctor_id: this.props.match.params.doctor_id,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleChange(e) {
         let target = e.target;
         let value = target.type === 'checkbox' ? target.checked : target.value;
@@ -40,6 +42,14 @@ class RemoveUnavailableDate extends Component {
         const request = new Request('http://3.130.67.96:3000/removeDate', options);
         const response = await fetch(request);
         const status = await response.status;
+
+        // Do on success
+        if (status === 200){
+            // Reset input field
+            this.setState({time_id:''});
+             // TODO: Call fetch to update lists
+        }
+
     }
 
 
