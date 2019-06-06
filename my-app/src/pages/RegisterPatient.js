@@ -11,7 +11,9 @@ class RegisterPatient extends Component {
       patient_name: '',
       patient_address: '',
       patient_phonenumber: '',
-      patient_birthdate: '',
+      patient_birthdate: '',      
+      patient_insurancenumber: '',
+      patient_insurancecover: '',
       guardian_name: '',
       guardian_address: '',
       guardian_number: '',
@@ -43,7 +45,9 @@ class RegisterPatient extends Component {
       'patient_name': this.state.patient_name,
       'patient_address': this.state.patient_address,
       'patient_phonenumber': this.state.patient_phonenumber,
-      'patient_birthdate': this.state.patient_birthdate,
+      'patient_birthdate': this.state.patient_birthdate,            
+      'patient_insurancenumber': this.state.patient_insurancenumber,
+      'patient_insurancecover': this.state.patient_insurancecover,
       'guardian_name': this.state.guardian_name,
       'guardian_address': this.state.guardian_address,
       'guardian_number': this.guardian_number,
@@ -99,6 +103,22 @@ class RegisterPatient extends Component {
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_birthdate">          Bithdate</label>
             <input type="date" className="FormField__Input" placeholder="Enter birthdate" name="patient_birthdate" value={this.state.patient_birthdate} onChange={this.handleChange} />
+          </div>
+          
+          <div className="FormField">
+            <label className="FormField__Label">
+              Provide Insurance Information
+                </label>
+          </div>
+
+          <div className="FormField">
+            <label className="FormField__Label" htmlFor="patient_insurancenumber">          Insurance Number</label>
+            <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter insurance number" name="patient_insurancenumber" value={this.state.patient_insurancenumber} onChange={this.handleChange} />
+          </div>
+
+          <div className="FormField">
+            <label className="FormField__Label" htmlFor="patient_insurancecover">          Insurance Cover</label>
+            <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter insurance cover" name="patient_insurancecover" value={this.state.patient_insurancover} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
