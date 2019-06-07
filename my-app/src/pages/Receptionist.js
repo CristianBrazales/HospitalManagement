@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import SignUpDoctor from './RegisterDoctor';
 import SignUpPatient from './RegisterPatient';
+import SignUpPatientYoung from './RegisterPatientYoung'
 
 
 class Receptionist extends Component {
@@ -11,7 +12,15 @@ class Receptionist extends Component {
         // Default 6000
         this.state = {
             receptionist_id: 6000,
+            items : []
         }
+    }
+
+    async componentDidMount(){
+        const url = 'http://3.130.67.96:3000/allAppointmentsRecept';
+        const response = await fetch(url);
+        const data = await response.json();
+        this.setState({items:data})
     }
 
     render() {
@@ -27,6 +36,14 @@ class Receptionist extends Component {
                                 -TO implement-</label>
                                 <label className="FormField__Label">
                                 -list of patients appointments- </label>
+                                <ul>
+                                    {this.state.items.map(item => (
+                                        //plaerholder for now
+                                            <li key={item.PID}>
+                                                    {item.Pname} | {item.PContact}
+                                            </li>
+                                    ))}
+                                </ul>
                         </div>
                     </div>
 
@@ -37,11 +54,15 @@ class Receptionist extends Component {
                             <NavLink to={"/Receptionist/RegisterDoctor/" + this.state.receptionist_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                                 Register Doctor</NavLink>or
                             <NavLink exact to={"/Receptionist/RegisterPatient/" + this.state.receptionist_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-                                Register Patient</NavLink>
+                                Register Patient 19 older</NavLink>or
+                            <NavLink exact to={"/Receptionist/RegisterPatientYoung/" + this.state.receptionist_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                                Register Patient 19 younder</NavLink>
                         </div>
 
 
                         <Route exact path="/Receptionist/RegisterPatient/:receptionist_id" component={SignUpPatient}>
+                        </Route >
+                        <Route exact path="/Receptionist/RegisterPatientYoung/:receptionist_id" component={SignUpPatientYoung}>
                         </Route >
                         <Route exact path="/Receptionist/RegisterDoctor/:receptionist_id" component={SignUpDoctor}>
                         </Route>

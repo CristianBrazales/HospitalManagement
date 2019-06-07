@@ -10,10 +10,27 @@ class Doctor extends Component {
         // Default doctor_id 4000
         this.state = {
             doctor_id: 4000,
+            itemsForUA: [],
+            itemsForUD: []
         }
     }
 
+    async componentDidMount(){
+        const urlUA = 'http://3.130.67.96:3000/upcomingAppointmentsDoc';
+        const responseUA = await fetch(urlUA);
+        const dataUA = await responseUA.json();
+        this.setState({itemsForUA:dataUA})
+
+        const urlUD = 'http://3.130.67.96:3000/AllUnTimesDoc';
+        const responseUD = await fetch(urlUD);
+        const dataUD = await responseUD.json();
+        this.setState({itemsForUD:dataUD})
+    }
+
+
+
     render() {
+
         return (
             <Router>
                 <div className="App">
@@ -25,6 +42,14 @@ class Doctor extends Component {
                                 -TO implement-</label>
                                 <label className="FormField__Label">
                                 -list of Appointments- </label>
+                                <ul>
+                                    {this.state.itemsForUA.map(item => (
+                                        //plaerholder for now
+                                            <li key={item.PID}>
+                                                    {item.Pname} | {item.PContact}
+                                            </li>
+                                    ))}
+                                </ul>
                         </div>
                         <div className="FormTitle"></div>
                         <div className="Receptionist_AppointmentsList">
@@ -34,6 +59,14 @@ class Doctor extends Component {
                                 -TO implement-</label>
                                 <label className="FormField__Label">
                                 -list of Unavailable Dates- </label>
+                                <ul>
+                                    {this.state.itemsForUD.map(item => (
+                                        //plaerholder for now
+                                            <li key={item.PID}>
+                                                    {item.Pname} | {item.PContact}
+                                            </li>
+                                    ))};
+                                </ul>
                         </div>
                     </div>
 
@@ -53,6 +86,7 @@ class Doctor extends Component {
             </Router>
         );
     }
+
 }
 
 export default Doctor;

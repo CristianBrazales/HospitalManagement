@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 
-class RegisterPatient extends Component {
+class RegisterPatientYoung extends Component {
   constructor(props) {
     super(props);
 
@@ -12,9 +12,11 @@ class RegisterPatient extends Component {
       patient_name: '',
       patient_address: '',
       patient_phonenumber: '',
-      patient_birthdate: '',      
-      patient_insurancenumber: '',
-      patient_insurancecover: '',
+      patient_birthdate: '',     
+      guardian_name: '',
+      guardian_address: '',
+      guardian_number: '',
+      guardian_birthdate: '',
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,8 +45,10 @@ class RegisterPatient extends Component {
       'patient_address': this.state.patient_address,
       'patient_phonenumber': this.state.patient_phonenumber,
       'patient_birthdate': this.state.patient_birthdate,            
-      'patient_insurancenumber': this.state.patient_insurancenumber,
-      'patient_insurancecover': this.state.patient_insurancecover,
+      'guardian_name': this.state.guardian_name,
+      'guardian_address': this.state.guardian_address,
+      'guardian_number': this.guardian_number,
+      'guardian_birthdate': this.guardian_birthdate,
     }
 
 
@@ -64,6 +68,10 @@ class RegisterPatient extends Component {
       this.setState({ patient_address: '' });
       this.setState({ patient_phonenumber: '' });
       this.setState({ patient_birthdate: '' });
+      this.setState({ guardian_name: '' });
+      this.setState({ guardian_address: '' });
+      this.setState({ guardian_number: '' });
+      this.setState({ guardian_birthdate: '' });
       // TODO: Call fetch to update lists
     }
   }
@@ -93,27 +101,25 @@ class RegisterPatient extends Component {
             <label className="FormField__Label" htmlFor="patient_birthdate">          Bithdate</label>
             <input type="date" className="FormField__Input" placeholder="Enter birthdate" name="patient_birthdate" value={this.state.patient_birthdate} onChange={this.handleChange} />
           </div>
-          
+
           <div className="FormField">
-            <label className="FormField__Label">
-              Provide Insurance Information
-                </label>
+            <label className="FormField__Label" htmlFor="guardian_name">           Guardian Name</label>
+            <input type="text" className="FormField__Input" placeholder="Enter full name" name="guardian_name" value={this.state.guardian_name} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
-            <label className="FormField__Label" htmlFor="patient_insurancenumber">          Insurance Number</label>
-            <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter insurance number" name="patient_insurancenumber" value={this.state.patient_insurancenumber} onChange={this.handleChange} />
+            <label className="FormField__Label" htmlFor="guardian_address">          Guardian Work Address</label>
+            <input type="text" className="FormField__Input" placeholder="Enter full address" name="guardian_address" value={this.state.guardian_address} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
-            <label className="FormField__Label" htmlFor="patient_insurancecover">          Insurance Cover</label>
-            <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter insurance cover" name="patient_insurancecover" value={this.state.patient_insurancover} onChange={this.handleChange} />
+            <label className="FormField__Label" htmlFor="guardian_phonenumber">          Guardian Phone Number</label>
+            <input type="number" id="guardian_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="guardian_number" value={this.state.guardian_number} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
-            <label className="FormField__Label">
-              (If the patient is under 19 years old include guardian information)
-                </label>
+            <label className="FormField__Label" htmlFor="guardian_birthdate">          Guardian Bithdate</label>
+            <input type="date" className="FormField__Input" placeholder="Enter birthdate" name="guardian_birthdate" value={this.state.guardian_birthdate} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
@@ -128,4 +134,4 @@ class RegisterPatient extends Component {
   }
 }
 
-export default RegisterPatient;
+export default RegisterPatientYoung;

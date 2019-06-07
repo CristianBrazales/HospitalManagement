@@ -9,7 +9,21 @@ class Patient extends Component {
         // Default 6000
         this.state = {
             patient_id: 78000,
+            itemsForA: [],
+            itemsForR: []
         }
+    }
+
+    async componentDidMount(){
+        const urlA = 'http://3.130.67.96:3000/allAppoitmentsPat';
+        const responseA = await fetch(urlA);
+        const dataA = await responseA.json();
+        this.setState({itemsForA:dataA})
+
+        const urlR = 'http://3.130.67.96:3000/getRecept';
+        const responseR = await fetch(urlR);
+        const dataR = await responseR.json();
+        this.setState({itemsForR:dataR})
     }
 
     render() {
@@ -24,6 +38,14 @@ class Patient extends Component {
                                 -TO implement-</label>
                                 <label className="FormField__Label">
                                 -list of Appointments- </label>
+                                <ul>
+                                    {this.state.itemsForA.map(item => (
+                                        //plaerholder for now
+                                            <li key={item.PID}>
+                                                    {item.Pname} | {item.PContact}
+                                            </li>
+                                    ))}
+                                </ul>
                         </div>
                         <div className="FormTitle"></div>
                         <div className="Receptionist_AppointmentsList">
@@ -33,6 +55,14 @@ class Patient extends Component {
                                 -TO implement-</label>
                                 <label className="FormField__Label">
                                 -Receptionist phone numbers- </label>
+                                <ul>
+                                    {this.state.itemsForR.map(item => (
+                                        //plaerholder for now
+                                            <li key={item.PID}>
+                                                    {item.Pname} | {item.PContact}
+                                            </li>
+                                    ))}
+                                </ul>
                         </div>
                     </div>
 
