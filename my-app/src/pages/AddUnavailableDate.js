@@ -6,7 +6,6 @@ class AddUnavailableDate extends Component {
         super(props);
         this.state ={
             time_from:'',
-            time_to: '',
             doctor_id: this.props.match.params.doctor_id,
         }
         this.handleChange = this.handleChange.bind(this);
@@ -28,8 +27,8 @@ class AddUnavailableDate extends Component {
         const headers = new Headers();
         headers.append('Content-type', 'application/json');
         var data = {
-            "time_from": this.state.time_from,
-            "time_to": this.state.time_to,
+            'time_from': this.state.time_from,
+            'doctor_id': this.state.doctor_id,
          }
         const options = {
             method: 'POST',
@@ -44,7 +43,6 @@ class AddUnavailableDate extends Component {
         if (status === 200){
             // Reset input field
             this.setState({time_from:''});
-            this.setState({time_to:''});
              // TODO: Call fetch to update Unavailable lists
         }
     }
@@ -56,12 +54,7 @@ class AddUnavailableDate extends Component {
                 <form className="FormFields" >
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="time_from">Time From</label>
-                        <input type="datetime-local" className="FormField__Input" placeholder="Enter date and time" name="time_from"  value={this.state.time_from} onChange={this.handleChange}/>
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="time_to">Time To</label>
-                        <input type="datetime-local" className="FormField__Input" placeholder="Enter date and time" name="time_to"  value={this.state.time_to} onChange={this.handleChange}/>
+                        <input type="string" className="FormField__Input" placeholder="Enter date and time" name="time_from"  value={this.state.time_from} onChange={this.handleChange}/>
                     </div>
 
                     <div className="FormField">

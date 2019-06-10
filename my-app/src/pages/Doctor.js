@@ -7,24 +7,30 @@ class Doctor extends Component {
 
     constructor(props) {
         super(props);
-        // Default doctor_id 4000
+        // Default doctor_id 1
         this.state = {
-            doctor_id: 4000,
+            doctor_id: 1,
             itemsForUA: [],
-            itemsForUD: []
+            itemsForUD: [],
+            itemsForAT: []
         }
     }
 
     async componentDidMount(){
-        const urlUA = 'http://3.130.67.96:3000/upcomingAppointmentsDoc';
+        const urlUA = 'http://3.130.67.96:3000/upcomingAppointmentsDoc?doctor_id='+this.state.doctor_id;
         const responseUA = await fetch(urlUA);
         const dataUA = await responseUA.json();
         this.setState({itemsForUA:dataUA})
 
-        const urlUD = 'http://3.130.67.96:3000/AllUnTimesDoc';
+        const urlUD = 'http://3.130.67.96:3000/AllUnTimesDoc?doctor_id='+this.state.doctor_id;
         const responseUD = await fetch(urlUD);
         const dataUD = await responseUD.json();
         this.setState({itemsForUD:dataUD})
+
+        const urlAT = 'http://3.130.67.96:3000/AllTimesDoc?doctor_id='+this.state.doctor_id;
+        const responseAT = await fetch(urlAT);
+        const dataAT = await responseAT.json();
+        this.setState({itemsForAT:dataAT})
     }
 
 
@@ -45,8 +51,8 @@ class Doctor extends Component {
                                 <ul>
                                     {this.state.itemsForUA.map(item => (
                                         //plaerholder for now
-                                            <li key={item.PID}>
-                                                    {item.Pname} | {item.PContact}
+                                            <li key={item.Pname}>
+                                                    {item.Pname} | {item.RoomNumber} | {item.ATID}
                                             </li>
                                     ))}
                                 </ul>
@@ -62,10 +68,27 @@ class Doctor extends Component {
                                 <ul>
                                     {this.state.itemsForUD.map(item => (
                                         //plaerholder for now
-                                            <li key={item.PID}>
-                                                    {item.Pname} | {item.PContact}
+                                            <li key={item.UID}>
+                                                    {item.UID} | {item.ATID}
                                             </li>
-                                    ))};
+                                    ))}
+                                </ul>
+                        </div>
+                        <div className="FormTitle"></div>
+                        <div className="Receptionist_AppointmentsList">
+                            <label className="FormField__LabelBigger">
+                                Add vacation</label>
+                                <label className="FormField__Label">
+                                -TO implement-</label>
+                                <label className="FormField__Label">
+                                -list of available Dates to go on vacation- </label>
+                                <ul>
+                                    {this.state.itemsForAT.map(item => (
+                                        //plaerholder for now
+                                            <li key={item.ATID}>
+                                                    {item.ATID} | {item.Tfrom}
+                                            </li>
+                                    ))}
                                 </ul>
                         </div>
                     </div>

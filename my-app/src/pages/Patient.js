@@ -6,21 +6,21 @@ import UpdatePersonalInformation from './UpdatePersonalInformation';
 class Patient extends Component {
     constructor(props) {
         super(props);
-        // Default 6000
+        // Default 1
         this.state = {
-            patient_id: 78000,
+            patient_id: 1,
             itemsForA: [],
             itemsForR: []
         }
     }
 
     async componentDidMount(){
-        const urlA = 'http://3.130.67.96:3000/allAppoitmentsPat';
+        const urlA = 'http://3.130.67.96:3000/allAppoitmentsPat?patient_id=' + this.state.patient_id;
         const responseA = await fetch(urlA);
         const dataA = await responseA.json();
         this.setState({itemsForA:dataA})
 
-        const urlR = 'http://3.130.67.96:3000/getRecept';
+        const urlR = 'http://3.130.67.96:3000/getRecept?patient_id=' +this.state.patient_id;
         const responseR = await fetch(urlR);
         const dataR = await responseR.json();
         this.setState({itemsForR:dataR})
@@ -42,7 +42,7 @@ class Patient extends Component {
                                     {this.state.itemsForA.map(item => (
                                         //plaerholder for now
                                             <li key={item.PID}>
-                                                    {item.Pname} | {item.PContact}
+                                                    {item.Dname} | {item.ATID} | {item.RoomNumber}
                                             </li>
                                     ))}
                                 </ul>
@@ -59,7 +59,7 @@ class Patient extends Component {
                                     {this.state.itemsForR.map(item => (
                                         //plaerholder for now
                                             <li key={item.PID}>
-                                                    {item.Pname} | {item.PContact}
+                                                    {item.Rname} | {item.Rcontact}
                                             </li>
                                     ))}
                                 </ul>
