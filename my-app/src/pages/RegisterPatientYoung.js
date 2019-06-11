@@ -58,6 +58,15 @@ class RegisterPatientYoung extends Component {
       body: JSON.stringify(data)
     };
 
+    this.refs.patient_name.value = ""
+    this.refs.patient_address.value = ""
+    this.refs.patient_number.value = ""
+    this.refs.patient_bdate.value = ""
+    this.refs.patient_gname.value = ""
+    this.refs.patient_gaddress.value = ""
+    this.refs.patient_gnumber.value = ""
+    this.refs.patient_gbdate.value = ""
+
     const request = new Request('http://3.130.67.96:3000/newPatient', options);
     const response = await fetch(request);
     const status = await response.status;
@@ -84,42 +93,42 @@ class RegisterPatientYoung extends Component {
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_name">           Patient Name</label>
-            <input type="text" className="FormField__Input" placeholder="Enter full name" name="patient_name" value={this.state.patient_name} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_name" placeholder="Enter full name" name="patient_name" value={this.state.patient_name} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_address">          Address</label>
-            <input type="text" className="FormField__Input" placeholder="Enter full address" name="patient_address" value={this.state.patient_address} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_address" placeholder="Enter full address" name="patient_address" value={this.state.patient_address} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_phonenumber">          Phone Number</label>
-            <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="patient_phonenumber" value={this.state.patient_phonenumber} onChange={this.handleChange} />
+            <input type="text" id="patient_phonenumber" ref="patient_number" className="FormField__Input" placeholder="Enter phone number" name="patient_phonenumber" value={this.state.patient_phonenumber} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_birthdate">          Bithdate</label>
-            <input type="date" className="FormField__Input" placeholder="Enter birthdate" name="patient_birthdate" value={this.state.patient_birthdate} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_bdate" placeholder="Enter birthdate" name="patient_birthdate" value={this.state.patient_birthdate} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="guardian_name">           Guardian Name</label>
-            <input type="text" className="FormField__Input" placeholder="Enter full name" name="guardian_name" value={this.state.guardian_name} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_gname" placeholder="Enter full name" name="guardian_name" value={this.state.guardian_name} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="guardian_address">          Guardian Work Address</label>
-            <input type="text" className="FormField__Input" placeholder="Enter full address" name="guardian_address" value={this.state.guardian_address} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_gaddress" placeholder="Enter full address" name="guardian_address" value={this.state.guardian_address} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="guardian_phonenumber">          Guardian Phone Number</label>
-            <input type="number" id="guardian_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="guardian_number" value={this.state.guardian_number} onChange={this.handleChange} />
+            <input type="text" id="guardian_phonenumber" ref="patient_gnumber" className="FormField__Input" placeholder="Enter phone number" name="guardian_number" value={this.state.guardian_number} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="guardian_birthdate">          Guardian Bithdate</label>
-            <input type="date" className="FormField__Input" placeholder="Enter birthdate" name="guardian_birthdate" value={this.state.guardian_birthdate} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_gbdate" placeholder="Enter birthdate" name="guardian_birthdate" value={this.state.guardian_birthdate} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">

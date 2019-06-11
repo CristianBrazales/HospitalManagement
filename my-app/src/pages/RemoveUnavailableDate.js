@@ -39,9 +39,13 @@ class RemoveUnavailableDate extends Component {
             body:JSON.stringify(data)
         };
 
+        this.refs.time_id.value = ""
+
         const request = new Request('http://3.130.67.96:3000/removeDate', options);
         const response = await fetch(request);
         const status = await response.status;
+
+
 
         // Do on success
         if (status === 200){
@@ -59,7 +63,7 @@ class RemoveUnavailableDate extends Component {
                 <form className="FormFields">
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="time_id">Time ID</label>
-                        <input type="number" className="FormField__Input" placeholder="Enter the id for the desired time to remove" name="time_id" value={this.state.time_id} onChange={this.handleChange} />
+                        <input type="number" className="FormField__Input" ref="time_id" placeholder="Enter the id for the desired time to remove" name="time_id" value={this.state.time_id} onChange={this.handleChange} />
                     </div>
 
                     <div className="FormField">

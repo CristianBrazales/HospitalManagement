@@ -54,6 +54,14 @@ class RegisterPatient extends Component {
       body: JSON.stringify(data)
     };
 
+    this.refs.patient_name.value = ""
+    this.refs.patient_address.value = ""
+    this.refs.patient_number.value = ""
+    this.refs.patient_bdate.value = ""
+    this.refs.patient_inumber.value = ""
+    this.refs.patient_icover.value = ""
+
+
     const request = new Request('http://3.130.67.96:3000/newPatient', options);
     const response = await fetch(request);
     const status = await response.status;
@@ -76,45 +84,34 @@ class RegisterPatient extends Component {
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_name">           Patient Name</label>
-            <input type="text" className="FormField__Input" placeholder="Enter full name" name="patient_name" value={this.state.patient_name} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_name" placeholder="Enter full name" name="patient_name" value={this.state.patient_name} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_address">          Address</label>
-            <input type="text" className="FormField__Input" placeholder="Enter full address" name="patient_address" value={this.state.patient_address} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_address" placeholder="Enter full address" name="patient_address" value={this.state.patient_address} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_phonenumber">          Phone Number</label>
-            <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="patient_phonenumber" value={this.state.patient_phonenumber} onChange={this.handleChange} />
+            <input type="text" id="patient_phonenumber" ref="patient_number" className="FormField__Input" placeholder="Enter phone number" name="patient_phonenumber" value={this.state.patient_phonenumber} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_birthdate">          Bithdate</label>
-            <input type="date" className="FormField__Input" placeholder="Enter birthdate" name="patient_birthdate" value={this.state.patient_birthdate} onChange={this.handleChange} />
-          </div>
-          
-          <div className="FormField">
-            <label className="FormField__Label">
-              Provide Insurance Information
-                </label>
+            <input type="text" className="FormField__Input" ref="patient_bdate" placeholder="Enter birthdate" name="patient_birthdate" value={this.state.patient_birthdate} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_insurancenumber">          Insurance Number</label>
-            <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter insurance number" name="patient_insurancenumber" value={this.state.patient_insurancenumber} onChange={this.handleChange} />
+            <input type="text" id="patient_phonenumber" ref="patient_inumber" className="FormField__Input" placeholder="Enter insurance number" name="patient_insurancenumber" value={this.state.patient_insurancenumber} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_insurancecover">          Insurance Cover</label>
-            <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter insurance cover" name="patient_insurancecover" value={this.state.patient_insurancover} onChange={this.handleChange} />
+            <input type="text" id="patient_phonenumber" ref="patient_icover" className="FormField__Input" placeholder="Enter insurance cover" name="patient_insurancecover" value={this.state.patient_insurancover} onChange={this.handleChange} />
           </div>
 
-          <div className="FormField">
-            <label className="FormField__Label">
-              (If the patient is under 19 years old include guardian information)
-                </label>
-          </div>
 
           <div className="FormField">
             <button className="FormField__Button mr-20" onClick={this.handleSubmit}>Submit</button>

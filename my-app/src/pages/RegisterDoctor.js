@@ -11,7 +11,6 @@ class RegisterDoctor extends Component {
       doctor_yrsOfExperience: '',
       doctor_address: '',
       doctor_phonenumber: '',
-      doctor_birthdate: '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,7 +39,6 @@ class RegisterDoctor extends Component {
       'doctor_yrsOfExperience': this.state.doctor_yrsOfExperience,
       'doctor_address': this.state.doctor_address,
       'doctor_phonenumber': this.state.doctor_phonenumber,
-      'doctor_birthdate': this.state.doctor_birthdate,
     }
 
 
@@ -49,6 +47,13 @@ class RegisterDoctor extends Component {
       headers,
       body: JSON.stringify(data)
     };
+
+    this.refs.doctor_name.value = ""
+    this.refs.doctor_spec.value = ""
+    this.refs.doctor_year.value = ""
+    this.refs.doctor_address.value = ""
+    this.refs.doctor_phone.value = ""
+
 
     const request = new Request('http://3.130.67.96:3000/newDoctor', options);
     const response = await fetch(request);
@@ -62,7 +67,6 @@ class RegisterDoctor extends Component {
       this.setState({ doctor_yrsOfExperience: '' });
       this.setState({ doctor_address: '' });
       this.setState({ doctor_phonenumber: '' });
-      this.setState({ doctor_birthdate: '' });
 
       // TODO: Call fetch to update lists
     }
@@ -75,33 +79,29 @@ class RegisterDoctor extends Component {
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="doctor_name">           Doctor Name</label>
-            <input type="text" className="FormField__Input" placeholder="Enter full name" name="doctor_name" value={this.state.doctor_name} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="doctor_name" placeholder="Enter full name" name="doctor_name" value={this.state.doctor_name} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="doctor_specialization">           Doctor Specialization</label>
-            <input type="text" className="FormField__Input" placeholder="Enter specialization" name="doctor_specialization" value={this.state.doctor_specialization} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="doctor_spec" placeholder="Enter specialization" name="doctor_specialization" value={this.state.doctor_specialization} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="doctor_yrsOfExperience">           Years of Experience</label>
-            <input type="number" className="FormField__Input" placeholder="Enter years of experience" name="doctor_yrsOfExperience" value={this.state.doctor_yrsOfExperience} onChange={this.handleChange} />
+            <input type="number" className="FormField__Input" ref="doctor_year" placeholder="Enter years of experience" name="doctor_yrsOfExperience" value={this.state.doctor_yrsOfExperience} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="doctor_address">          Address</label>
-            <input type="text" className="FormField__Input" placeholder="Enter full address" name="doctor_address" value={this.state.doctor_address} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="doctor_address" placeholder="Enter full address" name="doctor_address" value={this.state.doctor_address} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="doctor_phonenumber">          Phone Number</label>
-            <input type="number" id="doctor_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="doctor_phonenumber" value={this.state.doctor_phonenumber} onChange={this.handleChange} />
+            <input type="number" id="doctor_phonenumber" ref="doctor_phone" className="FormField__Input" placeholder="Enter phone number" name="doctor_phonenumber" value={this.state.doctor_phonenumber} onChange={this.handleChange} />
           </div>
 
-          <div className="FormField">
-            <label className="FormField__Label" htmlFor="doctor_birthdate">          Bithdate</label>
-            <input type="date" className="FormField__Input" placeholder="Enter birthdate" name="doctor_birthdate" value={this.state.doctor_birthdate} onChange={this.handleChange} />
-          </div>
           <div className="FormField">
             <button className="FormField__Button mr-20" onClick={this.handleSubmit}>Submit</button>
           </div>

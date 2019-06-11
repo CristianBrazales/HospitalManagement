@@ -9,15 +9,15 @@ class Receptionist extends Component {
 
     constructor(props) {
         super(props);
-        // Default 6000
+        // Default 1
         this.state = {
-            receptionist_id: 6000,
+            receptionist_id: 1,
             items : []
         }
     }
 
     async componentDidMount(){
-        const url = 'http://3.130.67.96:3000/allAppointmentsRecept';
+        const url = 'http://3.130.67.96:3000/allAppointmentsRecept?receptionist_id='+this.state.receptionist_id;
         const response = await fetch(url);
         const data = await response.json();
         this.setState({items:data})
@@ -40,7 +40,7 @@ class Receptionist extends Component {
                                     {this.state.items.map(item => (
                                         //plaerholder for now
                                             <li key={item.PID}>
-                                                    {item.Pname} | {item.PContact}
+                                                    {item.Pname} | {item.RoomNumber} | {item.ATID} | {item.Dname}
                                             </li>
                                     ))}
                                 </ul>
