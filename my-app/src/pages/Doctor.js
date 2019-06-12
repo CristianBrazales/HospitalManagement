@@ -9,6 +9,7 @@ class Doctor extends Component {
         super(props);
         // Default doctor_id 1
         this.state = {
+            refresh: false,
             doctor_id: 1,
             itemsForUA: [],
             itemsForUD: [],

@@ -11,12 +11,13 @@ class RegisterPatientYoung extends Component {
       receptionist_id: this.props.match.params.receptionist_id,
       patient_name: '',
       patient_address: '',
-      patient_phonenumber: '',
-      patient_birthdate: '',     
+      patient_contact: '',
+      patient_bdate: '',     
       guardian_name: '',
       guardian_address: '',
-      guardian_number: '',
-      guardian_birthdate: '',
+      guardian_contact: '',
+      guardian_bdate: '',
+      doctor_id: '',
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,15 +41,16 @@ class RegisterPatientYoung extends Component {
     headers.append('Content-type', 'application/json');
 
     var data = {
-      'receptionist_id': this.state.receptionist_id,
+      'receptionist_id': this.props.match.params.receptionist_id,
       'patient_name': this.state.patient_name,
       'patient_address': this.state.patient_address,
-      'patient_phonenumber': this.state.patient_phonenumber,
-      'patient_birthdate': this.state.patient_birthdate,            
+      'patient_contact': this.state.patient_contact,
+      'patient_bdate': this.state.patient_bdate,            
       'guardian_name': this.state.guardian_name,
       'guardian_address': this.state.guardian_address,
-      'guardian_number': this.guardian_number,
-      'guardian_birthdate': this.guardian_birthdate,
+      'guardian_contact': this.state.guardian_contact,
+      'guardian_bdate': this.state.guardian_bdate,
+      'doctor_id' : this.state.doctor_id,
     }
 
 
@@ -58,29 +60,31 @@ class RegisterPatientYoung extends Component {
       body: JSON.stringify(data)
     };
 
-    this.refs.patient_name.value = ""
-    this.refs.patient_address.value = ""
-    this.refs.patient_number.value = ""
-    this.refs.patient_bdate.value = ""
-    this.refs.patient_gname.value = ""
-    this.refs.patient_gaddress.value = ""
-    this.refs.patient_gnumber.value = ""
-    this.refs.patient_gbdate.value = ""
-
-    const request = new Request('http://3.130.67.96:3000/newPatient', options);
+    const request = new Request('http://3.130.67.96:3000/newPatientGuard', options);
     const response = await fetch(request);
     const status = await response.status;
+
+
+    // this.refs.patient_name.value = ""
+    // this.refs.patient_address.value = ""
+    // this.refs.patient_number.value = ""
+    // this.refs.patient_bdate.value = ""
+    // this.refs.patient_gname.value = ""
+    // this.refs.patient_gaddress.value = ""
+    // this.refs.patient_gnumber.value = ""
+    // this.refs.patient_gbdate.value = ""
 
     if (status === 200) {
       // Reset input field
       this.setState({ patient_name: '' });
       this.setState({ patient_address: '' });
-      this.setState({ patient_phonenumber: '' });
-      this.setState({ patient_birthdate: '' });
+      this.setState({ patient_contact: '' });
+      this.setState({ patient_bdate: '' });
       this.setState({ guardian_name: '' });
       this.setState({ guardian_address: '' });
-      this.setState({ guardian_number: '' });
-      this.setState({ guardian_birthdate: '' });
+      this.setState({ guardian_contact: '' });
+      this.setState({ guardian_bdate: '' });
+      this.setState({ doctor_id: '' });
       // TODO: Call fetch to update lists
     }
   }
@@ -90,6 +94,8 @@ class RegisterPatientYoung extends Component {
     return (
       <div className="FormCenter">
         <form className="FormFields" >
+
+          {console.log(this.state.receptionist_id)}
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_name">           Patient Name</label>
@@ -103,12 +109,12 @@ class RegisterPatientYoung extends Component {
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_phonenumber">          Phone Number</label>
-            <input type="text" id="patient_phonenumber" ref="patient_number" className="FormField__Input" placeholder="Enter phone number" name="patient_phonenumber" value={this.state.patient_phonenumber} onChange={this.handleChange} />
+            <input type="text" id="patient_phonenumber" ref="patient_number" className="FormField__Input" placeholder="Enter phone number" name="patient_contact" value={this.state.patient_contact} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_birthdate">          Bithdate</label>
-            <input type="text" className="FormField__Input" ref="patient_bdate" placeholder="Enter birthdate" name="patient_birthdate" value={this.state.patient_birthdate} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_bdate" placeholder="Enter birthdate" name="patient_bdate" value={this.state.patient_bdate} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
@@ -123,19 +129,23 @@ class RegisterPatientYoung extends Component {
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="guardian_phonenumber">          Guardian Phone Number</label>
-            <input type="text" id="guardian_phonenumber" ref="patient_gnumber" className="FormField__Input" placeholder="Enter phone number" name="guardian_number" value={this.state.guardian_number} onChange={this.handleChange} />
+            <input type="text" id="guardian_phonenumber" ref="patient_gnumber" className="FormField__Input" placeholder="Enter phone number" name="guardian_contact" value={this.state.guardian_contact} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="guardian_birthdate">          Guardian Bithdate</label>
-            <input type="text" className="FormField__Input" ref="patient_gbdate" placeholder="Enter birthdate" name="guardian_birthdate" value={this.state.guardian_birthdate} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_gbdate" placeholder="Enter birthdate" name="guardian_bdate" value={this.state.guardian_bdate} onChange={this.handleChange} />
+          </div>
+
+          <div className="FormField">
+            <label className="FormField__Label" htmlFor="patient_insurancecover">         Doctor ID</label>
+            <input type="text"  ref="doctor_id" className="FormField__Input" placeholder="Enter doctor's id" name="doctor_id" value={this.state.doctor_id} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <button className="FormField__Button mr-20" onClick={this.handleSubmit}>Submit</button>
           </div>
-
-
+          
         </form>
       </div>
 

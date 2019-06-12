@@ -7,10 +7,10 @@ class RegisterDoctor extends Component {
     this.state = {
       receptionist_id: this.props.match.params.receptionist_id,
       doctor_name: '',
-      doctor_specialization: '',
-      doctor_yrsOfExperience: '',
+      doctor_specs: '',
+      doctor_year: '',
       doctor_address: '',
-      doctor_phonenumber: '',
+      doctor_contact: '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,15 +30,15 @@ class RegisterDoctor extends Component {
     e.preventDefault();
     /* Left for back-end handling */
     const headers = new Headers();
-    headers.append('Content-type', 'application/json');
+    headers.append('Content-Type', 'application/json');
 
     var data = {
       'receptionist_id': this.props.match.params.receptionist_id,
       'doctor_name': this.state.doctor_name,
-      'doctor_specialization': this.state.doctor_specialization,
-      'doctor_yrsOfExperience': this.state.doctor_yrsOfExperience,
+      'doctor_specs': this.state.doctor_specs,
+      'doctor_year': this.state.doctor_year,
       'doctor_address': this.state.doctor_address,
-      'doctor_phonenumber': this.state.doctor_phonenumber,
+      'doctor_contact': this.state.doctor_contact,
     }
 
 
@@ -47,12 +47,6 @@ class RegisterDoctor extends Component {
       headers,
       body: JSON.stringify(data)
     };
-
-    this.refs.doctor_name.value = ""
-    this.refs.doctor_spec.value = ""
-    this.refs.doctor_year.value = ""
-    this.refs.doctor_address.value = ""
-    this.refs.doctor_phone.value = ""
 
 
     const request = new Request('http://3.130.67.96:3000/newDoctor', options);
@@ -63,13 +57,19 @@ class RegisterDoctor extends Component {
     if (status === 200) {
       // Reset input field
       this.setState({ doctor_name: '' });
-      this.setState({ doctor_specialization: '' });
-      this.setState({ doctor_yrsOfExperience: '' });
+      this.setState({ doctor_specs: '' });
+      this.setState({ doctor_years: '' });
       this.setState({ doctor_address: '' });
-      this.setState({ doctor_phonenumber: '' });
+      this.setState({ doctor_contact: '' });
 
       // TODO: Call fetch to update lists
     }
+
+    this.refs.doctor_name.value = ""
+    this.refs.doctor_spec.value = ""
+    this.refs.doctor_year.value = ""
+    this.refs.doctor_address.value = ""
+    this.refs.doctor_phone.value = ""
   }
 
   render() {
@@ -84,12 +84,12 @@ class RegisterDoctor extends Component {
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="doctor_specialization">           Doctor Specialization</label>
-            <input type="text" className="FormField__Input" ref="doctor_spec" placeholder="Enter specialization" name="doctor_specialization" value={this.state.doctor_specialization} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="doctor_spec" placeholder="Enter specialization" name="doctor_specs" value={this.state.doctor_specialization} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="doctor_yrsOfExperience">           Years of Experience</label>
-            <input type="number" className="FormField__Input" ref="doctor_year" placeholder="Enter years of experience" name="doctor_yrsOfExperience" value={this.state.doctor_yrsOfExperience} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="doctor_year" placeholder="Enter years of experience" name="doctor_year" value={this.state.doctor_yrsOfExperience} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
@@ -99,7 +99,7 @@ class RegisterDoctor extends Component {
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="doctor_phonenumber">          Phone Number</label>
-            <input type="number" id="doctor_phonenumber" ref="doctor_phone" className="FormField__Input" placeholder="Enter phone number" name="doctor_phonenumber" value={this.state.doctor_phonenumber} onChange={this.handleChange} />
+            <input type="text" id="doctor_phonenumber" ref="doctor_phone" className="FormField__Input" placeholder="Enter phone number" name="doctor_contact" value={this.state.doctor_phonenumber} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">

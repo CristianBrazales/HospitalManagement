@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Doctor from './Doctor';
 
 class AddUnavailableDate extends Component {
 
@@ -26,7 +27,7 @@ class AddUnavailableDate extends Component {
         console.log(this.state.time_from)
         /* Left for back-end handling */
         const headers = new Headers();
-        headers.append('Content-type', 'application/json');
+        headers.append('Content-Type', 'application/json');
         var data = {
             'time_from': this.state.time_from,
             'doctor_id': this.state.doctor_id,
@@ -37,21 +38,18 @@ class AddUnavailableDate extends Component {
             body:JSON.stringify(data)
         };
 
-
-        console.log("after")
-        console.log(this.state.time_from)
-        this.refs.a.value= ''
-
         const request = new Request('http://3.130.67.96:3000/newUnDateDoc', options);
         const response = await fetch(request);
         const status = await response.status;
-        this.setState({time_from:''})
         
+        this.refs.time_from.value= ''
+
         // Do on success
         if (status === 200){
             // Reset input field
             this.setState({time_from:''});
              // TODO: Call fetch to update Unavailable lists
+             window.location.reload()
         }
     }
 
@@ -59,10 +57,11 @@ class AddUnavailableDate extends Component {
     render() {
         return (
             <div className="FormCenter">
+                {console.log(this.state.doctor_id)}
                 <form className="FormFields" >
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="time_from">Time From</label>
-                        <input type="string" className="FormField__Input" ref="a" placeholder="Enter date and time" name="time_from"  onChange={this.handleChange} value={this.state.time_from} />
+                        <input type="string" className="FormField__Input" ref="time_from" placeholder="Enter date and time" name="time_from"  onChange={this.handleChange} value={this.state.time_from} />
                     </div>
 
                     <div className="FormField">

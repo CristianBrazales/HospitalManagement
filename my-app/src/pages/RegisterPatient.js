@@ -11,10 +11,11 @@ class RegisterPatient extends Component {
       receptionist_id: this.props.match.params.receptionist_id,
       patient_name: '',
       patient_address: '',
-      patient_phonenumber: '',
-      patient_birthdate: '',      
-      patient_insurancenumber: '',
-      patient_insurancecover: '',
+      patient_contact: '',
+      patient_bdate: '',      
+      insurance_id: '',
+      insurance_cost: '',
+      doctor_id: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -41,10 +42,11 @@ class RegisterPatient extends Component {
       'receptionist_id': this.state.receptionist_id,
       'patient_name': this.state.patient_name,
       'patient_address': this.state.patient_address,
-      'patient_phonenumber': this.state.patient_phonenumber,
-      'patient_birthdate': this.state.patient_birthdate,            
-      'patient_insurancenumber': this.state.patient_insurancenumber,
-      'patient_insurancecover': this.state.patient_insurancecover,
+      'patient_contact': this.state.patient_contact,
+      'patient_bdate': this.state.patient_bdate,            
+      'insurance_id': this.state.insurance_id,
+      'insurance_cost': this.state.insurance_cost,
+      'doctor_id' : this.state.doctor_id,
     }
 
 
@@ -54,24 +56,30 @@ class RegisterPatient extends Component {
       body: JSON.stringify(data)
     };
 
+
+    const request = new Request('http://3.130.67.96:3000/newPatientInsurance', options);
+    const response = await fetch(request);
+    const status = await response.status;
+
     this.refs.patient_name.value = ""
     this.refs.patient_address.value = ""
     this.refs.patient_number.value = ""
     this.refs.patient_bdate.value = ""
     this.refs.patient_inumber.value = ""
     this.refs.patient_icover.value = ""
-
-
-    const request = new Request('http://3.130.67.96:3000/newPatient', options);
-    const response = await fetch(request);
-    const status = await response.status;
+    this.refs.doctor_id.value = ""
 
     if (status === 200) {
       // Reset input field
       this.setState({ patient_name: '' });
       this.setState({ patient_address: '' });
-      this.setState({ patient_phonenumber: '' });
-      this.setState({ patient_birthdate: '' });
+      this.setState({ patient_contact: '' });
+      this.setState({ patient_bdate: '' });
+      this.setState({ insurance_id: '' });
+      this.setState({ insurance_cost: '' });
+      this.setState({ doctor_id: '' });
+
+        window.location.reload()
       // TODO: Call fetch to update lists
     }
   }
@@ -94,22 +102,27 @@ class RegisterPatient extends Component {
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_phonenumber">          Phone Number</label>
-            <input type="text" id="patient_phonenumber" ref="patient_number" className="FormField__Input" placeholder="Enter phone number" name="patient_phonenumber" value={this.state.patient_phonenumber} onChange={this.handleChange} />
+            <input type="text" ref="patient_number" className="FormField__Input" placeholder="Enter phone number" name="patient_contact" value={this.state.patient_contact} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_birthdate">          Bithdate</label>
-            <input type="text" className="FormField__Input" ref="patient_bdate" placeholder="Enter birthdate" name="patient_birthdate" value={this.state.patient_birthdate} onChange={this.handleChange} />
+            <input type="text" className="FormField__Input" ref="patient_bdate" placeholder="Enter birthdate" name="patient_bdate" value={this.state.patient_bdate} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_insurancenumber">          Insurance Number</label>
-            <input type="text" id="patient_phonenumber" ref="patient_inumber" className="FormField__Input" placeholder="Enter insurance number" name="patient_insurancenumber" value={this.state.patient_insurancenumber} onChange={this.handleChange} />
+            <input type="text"  ref="patient_inumber" className="FormField__Input" placeholder="Enter insurance number" name="insurance_id" value={this.state.insurance_id} onChange={this.handleChange} />
           </div>
 
           <div className="FormField">
             <label className="FormField__Label" htmlFor="patient_insurancecover">          Insurance Cover</label>
-            <input type="text" id="patient_phonenumber" ref="patient_icover" className="FormField__Input" placeholder="Enter insurance cover" name="patient_insurancecover" value={this.state.patient_insurancover} onChange={this.handleChange} />
+            <input type="text"  ref="patient_icover" className="FormField__Input" placeholder="Enter insurance cover" name="insurance_cost" value={this.state.insurance_cost} onChange={this.handleChange} />
+          </div>
+
+          <div className="FormField">
+            <label className="FormField__Label" htmlFor="patient_insurancecover">         Doctor ID</label>
+            <input type="text"  ref="doctor_id" className="FormField__Input" placeholder="Enter doctor's id" name="doctor_id" value={this.state.doctor_id} onChange={this.handleChange} />
           </div>
 
 

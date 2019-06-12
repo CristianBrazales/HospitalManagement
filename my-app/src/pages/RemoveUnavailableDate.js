@@ -39,21 +39,19 @@ class RemoveUnavailableDate extends Component {
             body:JSON.stringify(data)
         };
 
-        this.refs.time_id.value = ""
-
         const request = new Request('http://3.130.67.96:3000/removeDate', options);
         const response = await fetch(request);
         const status = await response.status;
 
-
+        this.refs.time_id.value = ""
 
         // Do on success
         if (status === 200){
             // Reset input field
             this.setState({time_id:''});
+            window.location.reload()
              // TODO: Call fetch to update lists
         }
-
     }
 
 

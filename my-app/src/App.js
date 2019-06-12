@@ -14,21 +14,23 @@ class App extends Component {
           <div className="App__Form__FullWidth">
             <Route exact path="/">
               <div className="FormTitle">
-                <NavLink to="/Doctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                <NavLink to="/Doctor/AddUnavailableDate/1" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                   Sign in as Doctor</NavLink>or
-                  <NavLink exact to="/Receptionist/RegisterDoctor" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                  <NavLink exact to="/Receptionist/RegisterDoctor/1" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                   Sign in as Receptionist</NavLink> or
-                  <NavLink exact to="/Patient/BookAppointment" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                  <NavLink exact to="/Patient/BookAppointment/1" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
                   Sign in as Patient</NavLink>
               </div>
             </Route >
 
 
-            <Route exact path="/Doctor" component={Doctor}>
+            <Route exact path="/Doctor/AddUnavailableDate/1" component={Doctor}>
             </Route >
-            <Route exact path="/Receptionist/RegisterDoctor" component={Receptionist}>
+            <Route exact path="/Doctor/RemoveUnavailableDate/1" component={Doctor}>
             </Route >
-            <Route exact path="/Patient/BookAppointment" component={Patient}>
+            <Route exact path="/Receptionist/RegisterDoctor/1" component={Receptionist}>
+            </Route >
+            <Route exact path="/Patient/BookAppointment/1" component={Patient}>
             </Route >
 
           </div>
