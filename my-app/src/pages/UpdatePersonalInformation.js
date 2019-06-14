@@ -9,11 +9,7 @@ class UpdatePersonalInformation extends Component {
             patient_id: this.props.match.params.patient_id,
             patient_name: '',
             patient_address: '',
-            patient_phonenumber: '',
-            guardian_name: '',
-            guardian_address: '',
-            guardian_number: '',
-            guardian_birthdate: '',
+            patient_contact: '',
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -34,18 +30,13 @@ class UpdatePersonalInformation extends Component {
         e.preventDefault();
         /* Left for back-end handling */
         const headers = new Headers();
-        headers.append('Content-type', 'application/json');
+        headers.append('Content-Type', 'application/json');
     
         var data = {
         'patient_id': this.props.match.params.patient_id,
           'patient_name': this.state.patient_name,
           'patient_address': this.state.patient_address,
-          'patient_phonenumber': this.state.patient_phonenumber,
-          'patient_birthdate': this.state.patient_birthdate,
-          'guardian_name': this.state.guardian_name,
-          'guardian_address': this.state.guardian_address,
-          'guardian_number': this.guardian_number,
-          'guardian_birthdate': this.guardian_birthdate,
+          'patient_contact': this.state.patient_contact,
         }
         const options = {
           method: 'POST',
@@ -61,14 +52,16 @@ class UpdatePersonalInformation extends Component {
             // Reset input field
             this.setState({ patient_name: '' });
             this.setState({ patient_address: '' });
-            this.setState({ patient_phonenumber: '' });
-            this.setState({ patient_birthdate: '' });
-            this.setState({ guardian_name: '' });
-            this.setState({ guardian_address: '' });
-            this.setState({ guardian_number: '' });
-            this.setState({ guardian_birthdate: '' });
+            this.setState({ patient_contact: '' });
             // TODO: Call fetch to update lists
           }
+      }
+
+      async componentDidMount(){
+        const urlUA = 'http://3.130.67.96:3000/upcomingAppointmentsDoc?doctor_id='+this.state.doctor_id;
+        const responseUA = await fetch(urlUA);
+        const dataUA = await responseUA.json();
+        this.setState({itemsForUA:dataUA})
       }
 
 
@@ -89,26 +82,7 @@ class UpdatePersonalInformation extends Component {
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="patient_phonenumber">          Update Phone Number</label>
-                        <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="patient_phonenumber" value={this.state.patient_phonenumber} onChange={this.handleChange} />
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label">                            guardian information</label>
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="guardian_name">           Update Guardian Name</label>
-                        <input type="text" className="FormField__Input" placeholder="Enter full name" name="guardian_name" value={this.state.guardian_name} onChange={this.handleChange} />
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="guardian_address">           Update Guardian Work Address</label>
-                        <input type="text" className="FormField__Input" placeholder="Enter full address" name="guardian_address" value={this.state.guardian_address} onChange={this.handleChange} />
-                    </div>
-
-                    <div className="FormField">
-                        <label className="FormField__Label" htmlFor="guardian_phonenumber">           Update Guardian Phone Number</label>
-                        <input type="number" id="guardian_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="guardian_number" value={this.state.guardian_number} onChange={this.handleChange} />
+                        <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="patient_contact" value={this.state.patient_contact} onChange={this.handleChange} />
                     </div>
 
                     <div className="FormField">
