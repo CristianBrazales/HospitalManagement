@@ -29,6 +29,44 @@ class Receptionist extends Component {
         this.setState({itemsC:dataC})
     }
 
+    toDate(str) {
+        let date = str
+        let year = date.substring(0, 4)
+        let month = date.substring(4,6)
+        let day = date.substring(6,8)
+        let time = date.substring(8)
+
+        
+        var monthInWord
+        if (month == '01'){
+             monthInWord = 'Jan'
+        } else if (month == '02'){
+            monthInWord = 'Feb'
+        } else if (month == '03'){
+            monthInWord = 'Mar'
+        } else if (month == '04'){
+           monthInWord = 'Apr'
+        } else if (month == '05'){
+            monthInWord = 'May'
+        } else if (month == '06'){
+            monthInWord = 'Jun'
+        } else if (month == '07'){
+            monthInWord = 'July'
+        } else if (month == '08'){
+            monthInWord = 'Aug'
+        } else if (month == '09'){
+            monthInWord = 'Sep'
+        } else if (month == '10'){
+            monthInWord = 'Oct'
+        } else if (month == '11'){
+            monthInWord = 'Nov'
+        } else {
+            monthInWord = 'Dec'
+        } 
+
+        return monthInWord+'/'+day+'/'+time+':00/'+year
+    }
+
     render() {
         return (
             <Router>
@@ -46,7 +84,7 @@ class Receptionist extends Component {
                                     {this.state.items.map(item => (
                                         //plaerholder for now
                                             <li key={item.PID}>
-                                                    {item.Pname} | {item.RoomNumber} | {item.ATID} | {item.Dname}
+                                                    {item.Pname} | {item.RoomNumber} | {this.toDate(item.ATID)} | {item.Dname}
                                             </li>
                                     ))}
                                 </ul>
