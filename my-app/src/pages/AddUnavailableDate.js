@@ -57,7 +57,6 @@ class AddUnavailableDate extends Component {
     render() {
         return (
             <div className="FormCenter">
-                {console.log(this.state.doctor_id)}
                 <form className="FormFields" >
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="time_from">Time From</label>

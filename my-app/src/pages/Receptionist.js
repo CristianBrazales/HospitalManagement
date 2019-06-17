@@ -12,7 +12,8 @@ class Receptionist extends Component {
         // Default 1
         this.state = {
             receptionist_id: 1,
-            items : []
+            items : [],
+            itemsC : []
         }
     }
 
@@ -21,6 +22,11 @@ class Receptionist extends Component {
         const response = await fetch(url);
         const data = await response.json();
         this.setState({items:data})
+
+        const urlC = 'http://3.130.67.96:3000/getDoctorsPatients';
+        const responseC = await fetch(urlC);
+        const dataC = await responseC.json();
+        this.setState({itemsC:dataC})
     }
 
     render() {
@@ -41,6 +47,23 @@ class Receptionist extends Component {
                                         //plaerholder for now
                                             <li key={item.PID}>
                                                     {item.Pname} | {item.RoomNumber} | {item.ATID} | {item.Dname}
+                                            </li>
+                                    ))}
+                                </ul>
+                        </div>
+                        <div className="FormTitle"></div>
+                        <div className="Receptionist_AppointmentsList">
+                            <label className="FormField__LabelBigger">
+                                Doctor and number of patients</label>
+                                <label className="FormField__Label">
+                                -TO implement-</label>
+                                <label className="FormField__Label">
+                                -list doctors and count- </label>
+                                <ul>
+                                    {this.state.itemsC.map(item => (
+                                        //plaerholder for now
+                                            <li key={item.DID}>
+                                                    {item.DID} | {item.Dname} | {item.NumPatients}
                                             </li>
                                     ))}
                                 </ul>

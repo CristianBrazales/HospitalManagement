@@ -14,6 +14,7 @@ class UpdatePersonalInformation extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        //this.componentWillMount = this.componentWillMount.bind(this);
     }
 
     handleChange(e) {
@@ -33,7 +34,7 @@ class UpdatePersonalInformation extends Component {
         headers.append('Content-Type', 'application/json');
     
         var data = {
-        'patient_id': this.props.match.params.patient_id,
+          'patient_id': this.props.match.params.patient_id,
           'patient_name': this.state.patient_name,
           'patient_address': this.state.patient_address,
           'patient_contact': this.state.patient_contact,
@@ -53,15 +54,19 @@ class UpdatePersonalInformation extends Component {
             this.setState({ patient_name: '' });
             this.setState({ patient_address: '' });
             this.setState({ patient_contact: '' });
+
+            window.location.reload()
             // TODO: Call fetch to update lists
           }
       }
 
       async componentDidMount(){
-        const urlUA = 'http://3.130.67.96:3000/upcomingAppointmentsDoc?doctor_id='+this.state.doctor_id;
-        const responseUA = await fetch(urlUA);
-        const dataUA = await responseUA.json();
-        this.setState({itemsForUA:dataUA})
+        const urlPI = 'http://3.130.67.96:3000/getPatient?patient_id='+this.state.patient_id;
+        const responsePI = await fetch(urlPI);
+        const dataPI = await responsePI.json();
+        this.setState({patient_name :dataPI[0].Pname})
+        this.setState({patient_address :dataPI[0].Paddress})
+        this.setState({patient_contact :dataPI[0].Pcontact})
       }
 
 
@@ -82,7 +87,7 @@ class UpdatePersonalInformation extends Component {
 
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="patient_phonenumber">          Update Phone Number</label>
-                        <input type="number" id="patient_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="patient_contact" value={this.state.patient_contact} onChange={this.handleChange} />
+                        <input type="text" id="patient_phonenumber" className="FormField__Input" placeholder="Enter phone number" name="patient_contact" value={this.state.patient_contact} onChange={this.handleChange} />
                     </div>
 
                     <div className="FormField">
