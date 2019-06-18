@@ -13,9 +13,22 @@ class Patient extends Component {
             itemsForR: [],
             itemsForAT: []
         }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.loadPatientLists = this.loadPatientLists.bind(this);
     }
 
-    async componentDidMount(){
+    handleChange(e){
+        let target = e.target;
+        let value = target.type === 'checkbox' ? target.checked : target.value;
+        let name = target.name;
+
+        this.setState({
+            [name] : value
+        });
+    }
+
+    async loadPatientLists(){
         const urlA = 'http://3.130.67.96:3000/allAppointmentsPat?patient_id=' + this.state.patient_id;
         const responseA = await fetch(urlA);
         const dataA = await responseA.json();
@@ -71,6 +84,8 @@ class Patient extends Component {
         return monthInWord+'/'+day+'/'+time+':00/'+year
     }
 
+    
+
     render() {
         return (
             <Router>
@@ -124,6 +139,20 @@ class Patient extends Component {
 
                     <div className="App__Form">
                         <div className="FormTitle">
+
+
+
+                        <div className="FormField">
+                                <label className="FormField__Label" htmlFor="patient_id">Patient ID</label>
+                                <input type="string" className="FormField__Input" ref="patient_id" placeholder="Enter your ID" name="patient_id" onChange={this.handleChange} value={this.state.patient_id} />
+                                
+                                <NavLink to={"/Patient/BookAppointment/" + this.state.patient_id} className="FormField__Label" onClick={this.loadPatientLists}>
+                                Sign in</NavLink>                        
+
+                            </div>
+
+
+
                             <NavLink to={"/Patient/BookAppointment/" + this.state.patient_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Book a New Appointment</NavLink>or
                             <NavLink exact to={"/Patient/UpdatePersonalInformation/" + this.state.patient_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">

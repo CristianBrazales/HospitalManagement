@@ -53,7 +53,6 @@ class AddUnavailableDate extends Component {
         }
     }
 
-
     render() {
         return (
             <div className="FormCenter">
