@@ -55,7 +55,7 @@ class BookAppointment extends Component {
                 <form className="FormFields" >
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="time_from">Time From</label>
-                        <input type="string" className="FormField__Input" ref="time_from" placeholder="Enter date and time" name="time_from"  onChange={this.handleChange} value={this.state.time_from} />
+                        <input type="string" className="FormField__Input" ref="time_from" placeholder="Enter ATID of date and time Ex) 2019070109" name="time_from"  onChange={this.handleChange} value={this.state.time_from} />
                     </div>
 
                     <div className="FormField">

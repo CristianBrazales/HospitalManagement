@@ -61,7 +61,7 @@ class RemoveUnavailableDate extends Component {
                 <form className="FormFields">
                     <div className="FormField">
                         <label className="FormField__Label" htmlFor="time_id">Time ID</label>
-                        <input type="number" className="FormField__Input" ref="time_id" placeholder="Enter the id for the desired time to remove" name="time_id" value={this.state.time_id} onChange={this.handleChange} />
+                        <input type="number" className="FormField__Input" ref="time_id" placeholder="Enter the id for the desired time to remove Ex)1" name="time_id" value={this.state.time_id} onChange={this.handleChange} />
                     </div>
 
                     <div className="FormField">

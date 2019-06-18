@@ -16,7 +16,7 @@ class Patient extends Component {
     }
 
     async componentDidMount(){
-        const urlA = 'http://3.130.67.96:3000/allAppoitmentsPat?patient_id=' + this.state.patient_id;
+        const urlA = 'http://3.130.67.96:3000/allAppointmentsPat?patient_id=' + this.state.patient_id;
         const responseA = await fetch(urlA);
         const dataA = await responseA.json();
         this.setState({itemsForA:dataA})
@@ -80,14 +80,12 @@ class Patient extends Component {
                             <label className="FormField__LabelBigger">
                                 My Appointments</label>
                                 <label className="FormField__Label">
-                                -TO implement-</label>
-                                <label className="FormField__Label">
                                 -list of Appointments- </label>
                                 <ul>
                                     {this.state.itemsForA.map(item => (
                                         //plaerholder for now
                                             <li key={item.PID}>
-                                                    {item.Dname} | {this.toDate(item.ATID)} | {item.RoomNumber}
+                                                    Doctor: {item.Dname} | Date: {this.toDate(item.Tfrom)} | Room: {item.RoomNumber}
                                             </li>
                                     ))}
                                 </ul>
@@ -97,14 +95,12 @@ class Patient extends Component {
                             <label className="FormField__LabelBigger">
                                 Contact Us</label>
                                 <label className="FormField__Label">
-                                -TO implement-</label>
-                                <label className="FormField__Label">
                                 -Receptionist phone numbers- </label>
                                 <ul>
                                     {this.state.itemsForR.map(item => (
                                         //plaerholder for now
                                             <li key={item.PID}>
-                                                    {item.Rname} | {item.Rcontact}
+                                                    Receptionist: {item.Rname} | Contact: {item.Rcontact}
                                             </li>
                                     ))}
                                 </ul>
@@ -114,14 +110,12 @@ class Patient extends Component {
                             <label className="FormField__LabelBigger">
                                  Your and doctor's available time</label>
                                 <label className="FormField__Label">
-                                -TO implement-</label>
-                                <label className="FormField__Label">
                                 -list of available times- </label>
                                 <ul>
                                     {this.state.itemsForAT.map(item => (
                                         //plaerholder for now
                                             <li key={item.PID}>
-                                                    {item.ATID} | {this.toDate(item.Tfrom)}
+                                                    ATID: {item.ATID} | Date: {this.toDate(item.Tfrom)}
                                             </li>
                                     ))}
                                 </ul>

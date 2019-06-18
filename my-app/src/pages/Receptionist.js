@@ -77,14 +77,12 @@ class Receptionist extends Component {
                             <label className="FormField__LabelBigger">
                                 Patients Upcoming Appointments</label>
                                 <label className="FormField__Label">
-                                -TO implement-</label>
-                                <label className="FormField__Label">
                                 -list of patients appointments- </label>
                                 <ul>
                                     {this.state.items.map(item => (
                                         //plaerholder for now
                                             <li key={item.PID}>
-                                                    {item.Pname} | {item.RoomNumber} | {this.toDate(item.ATID)} | {item.Dname}
+                                                    Patient: {item.Pname} | Room: {item.RoomNumber} | Date: {this.toDate(item.ATID)} | Doctor: {item.Dname}
                                             </li>
                                     ))}
                                 </ul>
@@ -94,14 +92,12 @@ class Receptionist extends Component {
                             <label className="FormField__LabelBigger">
                                 Doctor and number of patients</label>
                                 <label className="FormField__Label">
-                                -TO implement-</label>
-                                <label className="FormField__Label">
                                 -list doctors and count- </label>
                                 <ul>
                                     {this.state.itemsC.map(item => (
                                         //plaerholder for now
                                             <li key={item.DID}>
-                                                    {item.DID} | {item.Dname} | {item.NumPatients}
+                                                    Doctor ID: {item.DID} | Name: {item.Dname} | Specialization: {item.Dspec} | Number of patients: {item.NumPatients}
                                             </li>
                                     ))}
                                 </ul>

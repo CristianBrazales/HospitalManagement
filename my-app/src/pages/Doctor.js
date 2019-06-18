@@ -82,14 +82,12 @@ class Doctor extends Component {
                             <label className="FormField__LabelBigger">
                                 Upcoming Appointments</label>
                                 <label className="FormField__Label">
-                                -TO implement-</label>
-                                <label className="FormField__Label">
                                 -list of Appointments- </label>
                                 <ul>
                                     {this.state.itemsForUA.map(item => (
                                         //plaerholder for now
                                             <li key={item.Pname}>
-                                                    {item.Pname} | {item.RoomNumber} | {this.toDate(item.ATID)}
+                                                    Patient: {item.Pname} | Room: {item.RoomNumber} | Date: {this.toDate(item.ATID)}
                                             </li>
                                     ))}
                                 </ul>
@@ -98,8 +96,6 @@ class Doctor extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 My Unavailable Dates</label>
-                                <label className="FormField__Label">
-                                -TO implement-</label>
                                 <label className="FormField__Label">
                                 -list of Unavailable Dates- </label>
                                 <ul>
@@ -115,8 +111,6 @@ class Doctor extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Add vacation</label>
-                                <label className="FormField__Label">
-                                -TO implement-</label>
                                 <label className="FormField__Label">
                                 -list of available Dates to go on vacation- </label>
                                 <ul>
