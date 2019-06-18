@@ -75,7 +75,7 @@ class Patient extends Component {
         return (
             <Router>
                 <div className="App">
-                    <div className="App__Aside">
+                    <div className="App__AsidePatient">
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 My Appointments</label>
@@ -124,9 +124,9 @@ class Patient extends Component {
 
                     <div className="App__Form">
                         <div className="FormTitle">
-                            <NavLink to={"/Patient/BookAppointment/" + this.state.patient_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink to={"/Patient/BookAppointment/" + this.state.patient_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Book a New Appointment</NavLink>or
-                            <NavLink exact to={"/Patient/UpdatePersonalInformation/" + this.state.patient_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink exact to={"/Patient/UpdatePersonalInformation/" + this.state.patient_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Update Personal Information</NavLink>
                         </div>
                         <Route exact path="/Patient/BookAppointment/:patient_id" component={BookAppointment}>

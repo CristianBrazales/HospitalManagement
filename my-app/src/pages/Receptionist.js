@@ -13,7 +13,8 @@ class Receptionist extends Component {
         this.state = {
             receptionist_id: 1,
             items : [],
-            itemsC : []
+            itemsC : [],
+            itemsU : []
         }
     }
 
@@ -27,6 +28,11 @@ class Receptionist extends Component {
         const responseC = await fetch(urlC);
         const dataC = await responseC.json();
         this.setState({itemsC:dataC})
+
+        const urlU = 'http://3.130.67.96:3000/DoctorsVacation';
+        const responseU = await fetch(urlU);
+        const dataU = await responseU.json();
+        this.setState({itemsU:dataU})
     }
 
     toDate(str) {
@@ -72,7 +78,7 @@ class Receptionist extends Component {
             <Router>
 
                 <div className="App">
-                    <div className="App__Aside">
+                    <div className="App__AsideReceptionist">
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Patients Upcoming Appointments</label>
@@ -102,17 +108,32 @@ class Receptionist extends Component {
                                     ))}
                                 </ul>
                         </div>
+                        <div className="FormTitle"></div>
+                        <div className="Receptionist_AppointmentsList">
+                            <label className="FormField__LabelBigger">
+                                Time slots where all doctors went away</label>
+                                <label className="FormField__Label">
+                                -list doctors- </label>
+                                <ul>
+                                    {this.state.itemsU.map(item => (
+                                        //plaerholder for now
+                                            <li key={item.TFrom}>
+                                                    Time ATID: {item.TFrom} | Date: {this.toDate(item.TFrom)}}
+                                            </li>
+                                    ))}
+                                </ul>
+                        </div>
                     </div>
 
 
 
                     <div className="App__Form">
                         <div className="FormTitle">
-                            <NavLink to={"/Receptionist/RegisterDoctor/" + this.state.receptionist_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink to={"/Receptionist/RegisterDoctor/" + this.state.receptionist_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Register Doctor</NavLink>or
-                            <NavLink exact to={"/Receptionist/RegisterPatient/" + this.state.receptionist_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink exact to={"/Receptionist/RegisterPatient/" + this.state.receptionist_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Register Patient 19 older</NavLink>or
-                            <NavLink exact to={"/Receptionist/RegisterPatientYoung/" + this.state.receptionist_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink exact to={"/Receptionist/RegisterPatientYoung/" + this.state.receptionist_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Register Patient 19 younder</NavLink>
                         </div>
 

@@ -77,7 +77,7 @@ class Doctor extends Component {
         return (
             <Router>
                 <div className="App">
-                    <div className="App__Aside">
+                    <div className="App__AsideDoctor">
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Upcoming Appointments</label>
@@ -102,7 +102,7 @@ class Doctor extends Component {
                                     {this.state.itemsForUD.map(item => (
                                         //plaerholder for now
                                             <li key={item.UID}>
-                                                    {item.UID} | {this.toDate(item.ATID)}
+                                                    UID: {item.UID} | Date: {this.toDate(item.ATID)}
                                             </li>
                                     ))}
                                 </ul>
@@ -117,7 +117,7 @@ class Doctor extends Component {
                                     {this.state.itemsForAT.map(item => (
                                         //plaerholder for now
                                             <li key={item.ATID}>
-                                                    {item.ATID} | {this.toDate(item.Tfrom)}
+                                                    ATID: {item.ATID} | Date: {this.toDate(item.Tfrom)}
                                             </li>
                                     ))}
                                 </ul>
@@ -126,9 +126,9 @@ class Doctor extends Component {
 
                     <div className="App__Form">
                         <div className="FormTitle">
-                            <NavLink to={"/Doctor/AddUnavailableDate/" + this.state.doctor_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
-                                Add Unavailable Date</NavLink>or
-                            <NavLink exact to={"/Doctor/RemoveUnavailableDate/"+ this.state.doctor_id} activeClassName="FormTitle__Link--Active" className="FormTitle__Link">
+                            <NavLink to={"/Doctor/AddUnavailableDate/" + this.state.doctor_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
+                                Add Unavailable Date</NavLink>or 
+                            <NavLink exact to={"/Doctor/RemoveUnavailableDate/"+ this.state.doctor_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Remove Unavailable Date</NavLink>
                         </div>
                         <Route exact path="/Doctor/AddUnavailableDate/:doctor_id" component={AddUnavailableDate}>

@@ -12,6 +12,31 @@
   overflow: auto;
 }
 
+.App__AsideDoctor {
+  height: 85%;
+  width: 50%;
+  background-image: url(doctor.jpg);
+  
+  padding: 25px 40px;  
+  overflow: auto;
+}
+
+.App__AsideReceptionist {
+  height: 85%;
+  width: 50%;
+  background-image: url(receptionist.jpg);
+  padding: 25px 40px;  
+  overflow: auto;
+}
+
+.App__AsidePatient {
+  height: 85%;
+  width: 50%;
+  background-image: url(patient2.jpg);
+  padding: 25px 40px;  
+  overflow: auto;
+}
+
 .App__Form {  
   height: 85%;
   width: 50%;
@@ -102,8 +127,14 @@
   border-bottom: 1px solid #199087;
 }
 
+.FormTitle__Link--ActiveWhite {
+  color: white;
+  border-bottom: 1px solid #199087;
+}
+
 .FormTitle__Link--ActiveOnlyWhite {
   color: white;
+  border-bottom: 1px solid #199087;
 }
 
 .FormTitle__Link--ListPatients {
