@@ -62,14 +62,16 @@ class RegisterDoctor extends Component {
       this.setState({ doctor_address: '' });
       this.setState({ doctor_contact: '' });
 
+      this.refs.doctor_name.value = ""
+      this.refs.doctor_spec.value = ""
+      this.refs.doctor_year.value = ""
+      this.refs.doctor_address.value = ""
+      this.refs.doctor_phone.value = ""
+
+      window.location.reload();
+
       // TODO: Call fetch to update lists
     }
-
-    this.refs.doctor_name.value = ""
-    this.refs.doctor_spec.value = ""
-    this.refs.doctor_year.value = ""
-    this.refs.doctor_address.value = ""
-    this.refs.doctor_phone.value = ""
   }
 
   render() {

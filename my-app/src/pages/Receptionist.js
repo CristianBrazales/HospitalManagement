@@ -14,8 +14,10 @@ class Receptionist extends Component {
             receptionist_id: 1,
             items : [],
             itemsC : [],
-            itemsU : []
+            itemsU : [],
+            selectedOption: 'option1'
         }
+        this.handleOptionChange = this.handleOptionChange.bind(this);
     }
 
     async componentDidMount(){
@@ -34,6 +36,12 @@ class Receptionist extends Component {
         const dataU = await responseU.json();
         this.setState({itemsU:dataU})
     }
+
+    handleOptionChange(changeEvent) {
+        this.setState({
+          selectedOption: changeEvent.target.value
+        });
+      }
 
     toDate(str) {
         let date = str
@@ -74,24 +82,79 @@ class Receptionist extends Component {
     }
 
     render() {
+        let query
+        if (this.state.selectedOption === 'option1'){
+            query = this.state.items.map(item => (
+                //plaerholder for now
+                    <li key={item.PID}>
+                        
+                            Patient: {item.Pname} | Room: {item.RoomNumber} | Date: {this.toDate(item.ATID)} | Doctor: {item.Dname}
+                    </li>
+            ))
+        } else if (this.state.selectedOption === 'option2') {
+            query = this.state.items.map(item => (
+                //plaerholder for now
+                    <li key={item.PID}>
+                        
+                            Patient: {item.Pname} |  Date: {this.toDate(item.ATID)} | Doctor: {item.Dname}
+                    </li>
+            ))
+        } else {
+            query = this.state.items.map(item => (
+                //plaerholder for now
+                    <li key={item.PID}>
+                        
+                            Patient: {item.Pname} | Date: {this.toDate(item.ATID)} 
+                    </li>
+            ))
+        }
+
         return (
             <Router>
 
                 <div className="App">
                     <div className="App__AsideReceptionist">
                         <div className="Receptionist_AppointmentsList">
+                        <form>
+                            <div className="radio">
+                            <label>
+                                <input type="radio" value="option1" 
+                                            checked={this.state.selectedOption === 'option1'} 
+                                            onChange={this.handleOptionChange} />
+                                show patient, room, time, and doctor
+                            </label>
+                            </div>
+                            <div className="radio">
+                            <label>
+                                <input type="radio" value="option2" 
+                                            checked={this.state.selectedOption === 'option2'} 
+                                            onChange={this.handleOptionChange} />
+                                 show patient, time, and doctor
+                            </label>
+                            </div>
+                            <div className="radio">
+                            <label>
+                                <input type="radio" value="option3" 
+                                            checked={this.state.selectedOption === 'option3'} 
+                                            onChange={this.handleOptionChange} />
+                                 show patient, time
+                            </label>
+                            </div>
+                        </form>
                             <label className="FormField__LabelBigger">
                                 Patients Upcoming Appointments</label>
                                 <label className="FormField__Label">
                                 -list of patients appointments- </label>
-                                <ul>
+                                {query}
+                                {/* <ul>
                                     {this.state.items.map(item => (
                                         //plaerholder for now
                                             <li key={item.PID}>
+                                                
                                                     Patient: {item.Pname} | Room: {item.RoomNumber} | Date: {this.toDate(item.ATID)} | Doctor: {item.Dname}
                                             </li>
                                     ))}
-                                </ul>
+                                </ul> */}
                         </div>
                         <div className="FormTitle"></div>
                         <div className="Receptionist_AppointmentsList">
