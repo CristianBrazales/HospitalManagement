@@ -166,7 +166,7 @@ class Receptionist extends Component {
                         <div className="FormTitle"></div>
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
-                                Time slots where all doctors went away</label>                                
+                                Time slots where no doctor is available</label>                                
                                 <ul>
                                     {this.state.itemsU.map(item => (
                                             <li key={item.TFrom}>
