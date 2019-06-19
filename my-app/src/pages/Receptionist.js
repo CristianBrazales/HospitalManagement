@@ -11,7 +11,7 @@ class Receptionist extends Component {
         super(props);
         // Default 1
         this.state = {
-            receptionist_id: 1,
+            receptionist_id: 2,
             items : [],
             itemsC : [],
             itemsU : [],
