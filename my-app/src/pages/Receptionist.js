@@ -21,6 +21,7 @@ class Receptionist extends Component {
     }
 
     async componentDidMount(){
+
         const url = 'http://3.130.67.96:3000/allAppointmentsRecept?receptionist_id='+this.state.receptionist_id;
         const response = await fetch(url);
         const data = await response.json();
@@ -85,7 +86,6 @@ class Receptionist extends Component {
         let query
         if (this.state.selectedOption === 'option1'){
             query = this.state.items.map(item => (
-                //plaerholder for now
                     <li key={item.PID}>
                         
                             Patient: {item.Pname} | Room: {item.RoomNumber} | Date: {this.toDate(item.ATID)} | Doctor: {item.Dname}
@@ -93,7 +93,6 @@ class Receptionist extends Component {
             ))
         } else if (this.state.selectedOption === 'option2') {
             query = this.state.items.map(item => (
-                //plaerholder for now
                     <li key={item.PID}>
                         
                             Patient: {item.Pname} |  Date: {this.toDate(item.ATID)} | Doctor: {item.Dname}
@@ -101,7 +100,6 @@ class Receptionist extends Component {
             ))
         } else {
             query = this.state.items.map(item => (
-                //plaerholder for now
                     <li key={item.PID}>
                         
                             Patient: {item.Pname} | Date: {this.toDate(item.ATID)} 
@@ -111,7 +109,6 @@ class Receptionist extends Component {
 
         return (
             <Router>
-
                 <div className="App">
                     <div className="App__AsideReceptionist">
                         <div className="Receptionist_AppointmentsList">
@@ -121,7 +118,7 @@ class Receptionist extends Component {
                                 <input type="radio" value="option1" 
                                             checked={this.state.selectedOption === 'option1'} 
                                             onChange={this.handleOptionChange} />
-                                show patient, room, time, and doctor
+                                Show patient, room, time, and doctor
                             </label>
                             </div>
                             <div className="radio">
@@ -129,7 +126,7 @@ class Receptionist extends Component {
                                 <input type="radio" value="option2" 
                                             checked={this.state.selectedOption === 'option2'} 
                                             onChange={this.handleOptionChange} />
-                                 show patient, time, and doctor
+                                 Show patient, time, and doctor
                             </label>
                             </div>
                             <div className="radio">
@@ -137,14 +134,14 @@ class Receptionist extends Component {
                                 <input type="radio" value="option3" 
                                             checked={this.state.selectedOption === 'option3'} 
                                             onChange={this.handleOptionChange} />
-                                 show patient, time
+                                 Show patient, time <br></br><br></br>
                             </label>
                             </div>
                         </form>
                             <label className="FormField__LabelBigger">
                                 Patients Upcoming Appointments</label>
                                 <label className="FormField__Label">
-                                -list of patients appointments- </label>
+                                -list of patients appointments- <br></br><br></br> </label>
                                 {query}
                                 {/* <ul>
                                     {this.state.items.map(item => (
@@ -164,7 +161,6 @@ class Receptionist extends Component {
                                 -list doctors and count- </label>
                                 <ul>
                                     {this.state.itemsC.map(item => (
-                                        //plaerholder for now
                                             <li key={item.DID}>
                                                     Doctor ID: {item.DID} | Name: {item.Dname} | Specialization: {item.Dspec} | Number of patients: {item.NumPatients}
                                             </li>
@@ -179,17 +175,13 @@ class Receptionist extends Component {
                                 -list doctors- </label>
                                 <ul>
                                     {this.state.itemsU.map(item => (
-                                        //plaerholder for now
                                             <li key={item.TFrom}>
-                                                    Time ATID: {item.TFrom} | Date: {this.toDate(item.TFrom)}}
+                                                    Time ATID: {item.TFrom} | Date: {this.toDate(item.TFrom)}
                                             </li>
                                     ))}
                                 </ul>
                         </div>
                     </div>
-
-
-
                     <div className="App__Form">
                         <div className="FormTitle">
                             <NavLink to={"/Receptionist/RegisterDoctor/" + this.state.receptionist_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
@@ -199,8 +191,6 @@ class Receptionist extends Component {
                             <NavLink exact to={"/Receptionist/RegisterPatientYoung/" + this.state.receptionist_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Register Patient 19 younder</NavLink>
                         </div>
-
-
                         <Route exact path="/Receptionist/RegisterPatient/:receptionist_id" component={SignUpPatient}>
                         </Route >
                         <Route exact path="/Receptionist/RegisterPatientYoung/:receptionist_id" component={SignUpPatientYoung}>

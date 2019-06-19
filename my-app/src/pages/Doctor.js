@@ -7,7 +7,6 @@ class Doctor extends Component {
 
     constructor(props) {
         super(props);
-        // Default doctor_id 1
         this.state = {
             refresh: false,
             doctor_id: '',
@@ -21,22 +20,25 @@ class Doctor extends Component {
     }
 
     async loadDoctorLists() {
-        console.log('xxxxxxxxxxxx');
+        console.log('Reset Lists');
+        this.setState({ itemsForUA: [] });
+        this.setState({ itemsForUD: [] });
+        this.setState({ itemsForAT: [] });
         console.log(this.state.doctor_id);
         const urlUA = 'http://3.130.67.96:3000/upcomingAppointmentsDoc?doctor_id=' + this.state.doctor_id;
         const responseUA = await fetch(urlUA);
         const dataUA = await responseUA.json();
-        this.setState({ itemsForUA: dataUA })
+        this.setState({ itemsForUA: dataUA });
 
         const urlUD = 'http://3.130.67.96:3000/AllUnTimesDoc?doctor_id=' + this.state.doctor_id;
         const responseUD = await fetch(urlUD);
         const dataUD = await responseUD.json();
-        this.setState({ itemsForUD: dataUD })
+        this.setState({ itemsForUD: dataUD });
 
         const urlAT = 'http://3.130.67.96:3000/AllTimesDoc?doctor_id=' + this.state.doctor_id;
         const responseAT = await fetch(urlAT);
         const dataAT = await responseAT.json();
-        this.setState({ itemsForAT: dataAT })
+        this.setState({ itemsForAT: dataAT });
         console.log('xxxxxxxxxxxx finished');
     }
 
@@ -78,13 +80,13 @@ class Doctor extends Component {
         return monthInWord + '/' + day + '/' + time + ':00/' + year
     }
 
-    handleChange(e){
+    handleChange(e) {
         let target = e.target;
         let value = target.type === 'checkbox' ? target.checked : target.value;
         let name = target.name;
 
         this.setState({
-            [name] : value
+            [name]: value
         });
     }
 
@@ -100,7 +102,6 @@ class Doctor extends Component {
                                 -list of Appointments- </label>
                             <ul>
                                 {this.state.itemsForUA.map(item => (
-                                    //plaerholder for now
                                     <li key={item.Pname}>
                                         Patient: {item.Pname} | Room: {item.RoomNumber} | Date: {this.toDate(item.ATID)}
                                     </li>
@@ -115,7 +116,6 @@ class Doctor extends Component {
                                 -list of Unavailable Dates- </label>
                             <ul>
                                 {this.state.itemsForUD.map(item => (
-                                    //plaerholder for now
                                     <li key={item.UID}>
                                         UID: {item.UID} | Date: {this.toDate(item.ATID)}
                                     </li>
@@ -130,7 +130,6 @@ class Doctor extends Component {
                                 -list of available Dates to go on vacation- </label>
                             <ul>
                                 {this.state.itemsForAT.map(item => (
-                                    //plaerholder for now
                                     <li key={item.ATID}>
                                         ATID: {item.ATID} | Date: {this.toDate(item.Tfrom)}
                                     </li>
@@ -141,23 +140,12 @@ class Doctor extends Component {
 
                     <div className="App__Form">
                         <div className="FormTitle">
-
-
-
-
                             <div className="FormField">
                                 <label className="FormField__Label" htmlFor="doctor_id">Doctor ID</label>
                                 <input type="string" className="FormField__Input" ref="doctor_id" placeholder="Enter your ID" name="doctor_id" onChange={this.handleChange} value={this.state.doctor_id} />
-                                
                                 <NavLink to={"/Doctor/AddUnavailableDate/" + this.state.doctor_id} className="FormField__Label" onClick={this.loadDoctorLists}>
-                                Sign in</NavLink>                              
-
+                                    Sign in</NavLink>
                             </div>
-                           
-
-
-
-
                             <NavLink to={"/Doctor/AddUnavailableDate/" + this.state.doctor_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Add Unavailable Date</NavLink>or
                             <NavLink exact to={"/Doctor/RemoveUnavailableDate/" + this.state.doctor_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
@@ -174,5 +162,4 @@ class Doctor extends Component {
     }
 
 }
-
 export default Doctor;
