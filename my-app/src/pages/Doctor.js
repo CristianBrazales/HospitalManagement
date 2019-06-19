@@ -98,8 +98,6 @@ class Doctor extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Upcoming Appointments</label>
-                            <label className="FormField__Label">
-                                -list of Appointments- </label>
                             <ul>
                                 {this.state.itemsForUA.map(item => (
                                     <li key={item.Pname}>
@@ -112,8 +110,6 @@ class Doctor extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 My Unavailable Dates</label>
-                            <label className="FormField__Label">
-                                -list of Unavailable Dates- </label>
                             <ul>
                                 {this.state.itemsForUD.map(item => (
                                     <li key={item.UID}>
@@ -125,9 +121,7 @@ class Doctor extends Component {
                         <div className="FormTitle"></div>
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
-                                Add vacation</label>
-                            <label className="FormField__Label">
-                                -list of available Dates to go on vacation- </label>
+                                Add New Unavailable Date For</label>
                             <ul>
                                 {this.state.itemsForAT.map(item => (
                                     <li key={item.ATID}>

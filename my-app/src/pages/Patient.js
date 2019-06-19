@@ -98,8 +98,6 @@ class Patient extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 My Appointments</label>
-                            <label className="FormField__Label">
-                                -list of Appointments- </label>
                             <ul>
                                 {this.state.itemsForA.map(item => (
                                     <li key={item.PID}>
@@ -112,8 +110,6 @@ class Patient extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Contact Us</label>
-                            <label className="FormField__Label">
-                                -Receptionist phone numbers- </label>
                             <ul>
                                 {this.state.itemsForR.map(item => (
                                     <li key={item.PID}>
@@ -126,8 +122,6 @@ class Patient extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Your and doctor's available time</label>
-                            <label className="FormField__Label">
-                                -list of available times- </label>
                             <ul>
                                 {this.state.itemsForAT.map(item => (
                                     <li key={item.PID}>

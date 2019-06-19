@@ -139,9 +139,7 @@ class Receptionist extends Component {
                             </div>
                         </form>
                             <label className="FormField__LabelBigger">
-                                Patients Upcoming Appointments</label>
-                                <label className="FormField__Label">
-                                -list of patients appointments- <br></br><br></br> </label>
+                                Patients Upcoming Appointments</label> <br></br>
                                 {query}
                                 {/* <ul>
                                     {this.state.items.map(item => (
@@ -157,8 +155,6 @@ class Receptionist extends Component {
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
                                 Doctor and number of patients</label>
-                                <label className="FormField__Label">
-                                -list doctors and count- </label>
                                 <ul>
                                     {this.state.itemsC.map(item => (
                                             <li key={item.DID}>
@@ -170,9 +166,7 @@ class Receptionist extends Component {
                         <div className="FormTitle"></div>
                         <div className="Receptionist_AppointmentsList">
                             <label className="FormField__LabelBigger">
-                                Time slots where all doctors went away</label>
-                                <label className="FormField__Label">
-                                -list doctors- </label>
+                                Time slots where all doctors went away</label>                                
                                 <ul>
                                     {this.state.itemsU.map(item => (
                                             <li key={item.TFrom}>
@@ -187,9 +181,9 @@ class Receptionist extends Component {
                             <NavLink to={"/Receptionist/RegisterDoctor/" + this.state.receptionist_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
                                 Register Doctor</NavLink>or
                             <NavLink exact to={"/Receptionist/RegisterPatient/" + this.state.receptionist_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
-                                Register Patient 19 older</NavLink>or
+                                Register Patient 19 or older</NavLink>or
                             <NavLink exact to={"/Receptionist/RegisterPatientYoung/" + this.state.receptionist_id} activeClassName="FormTitle__Link--ActiveOnlyWhite" className="FormTitle__Link">
-                                Register Patient 19 younder</NavLink>
+                                Register Patient Underage</NavLink>
                         </div>
                         <Route exact path="/Receptionist/RegisterPatient/:receptionist_id" component={SignUpPatient}>
                         </Route >
