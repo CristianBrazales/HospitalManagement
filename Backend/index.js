@@ -11,7 +11,7 @@ const Errors = require('./errors'); // my collection of custom exceptions
 var con = mysql.createConnection({
   host: "cpsc304project.cgjfu2jm6dbw.us-east-2.rds.amazonaws.com",
   user: "shinhs0506",
-  password: "Johnshin0506?",
+  password: "abcd1234",
   database: "DoctorsAppointment"
 });
 
